@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle, Play, AtSign, Users, Heart, TrendingUp, Eye } from "lucide-react";
+import { ArrowRight, CheckCircle, Play, AtSign, Users, Heart, TrendingUp } from "lucide-react";
 
 const highlights = [
   "광고비 포함 올인원 가격",
@@ -16,8 +16,8 @@ const tickerItems = [
   { icon: "🎬", label: "릴스", value: "119만" },
   { icon: "🎬", label: "릴스", value: "70.1만" },
   { icon: "🎬", label: "릴스", value: "64.3만" },
-  { icon: "🧵", label: "스레드", value: "192.8만" },
-  { icon: "🧵", label: "스레드", value: "39만" },
+  { icon: "🧵", label: "스레드 조회수", value: "192.8만" },
+  { icon: "🧵", label: "스레드 조회수", value: "39만" },
   { icon: "👥", label: "팔로워", value: "1.4만" },
   { icon: "❤️", label: "반응", value: "1.3만" },
 ];
@@ -35,8 +35,6 @@ const statCards = [
   { icon: Users,     platform: "스레드",  label: "팔로워",        value: "1.4만",   color: "thread" },
   { icon: Heart,     platform: "스레드",  label: "누적 반응",     value: "1.3만",   color: "thread" },
   { icon: Heart,     platform: "스레드",  label: "30일 반응",     value: "2,857",   color: "thread" },
-  /* 릴스 총합 */
-  { icon: Eye,       platform: "릴스",    label: "총 누적 조회수", value: "1,235만+", color: "reels" },
 ];
 
 const colorMap = {

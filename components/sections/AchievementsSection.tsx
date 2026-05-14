@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { TrendingUp, Play, AtSign, Eye, Users, Zap } from "lucide-react";
+import { Play, AtSign, Users, Heart, Eye, Zap } from "lucide-react";
 
 /* ── 카운터 훅 ── */
-function useCounter(target: number, duration = 1600, decimals = 0) {
+function useCounter(target: number, duration = 1500, decimals = 0) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -25,67 +25,52 @@ function useCounter(target: number, duration = 1600, decimals = 0) {
   return { count, ref };
 }
 
-/* ── KPI 수치 ── */
-const kpis = [
-  { icon: Eye,        label: "릴스 누적 조회수", value: 1235,  unit: "만+", color: "#E8A020", decimals: 0 },
-  { icon: TrendingUp, label: "단일 최고 조회수", value: 891,   unit: "만",  color: "#F0B429", decimals: 0 },
-  { icon: AtSign,     label: "스레드 누적 조회", value: 192.8, unit: "만",  color: "#E8A020", decimals: 1 },
-  { icon: Users,      label: "스레드 팔로워",    value: 1.4,   unit: "만",  color: "#F0B429", decimals: 1 },
+/* ── 스크린샷에 실제로 나온 숫자만 ── */
+
+// 릴스 바 차트 (릴스 조회수 1~4.jpg에서 직접 확인)
+const reelsData = [
+  { label: "릴스 #1", value: 891,  unit: "만", source: "릴스 조회수 4.jpg" },
+  { label: "릴스 #2", value: 119,  unit: "만", source: "릴스 조회수 2.jpg" },
+  { label: "릴스 #3", value: 70.1, unit: "만", source: "릴스 조회수 3.jpg" },
+  { label: "릴스 #4", value: 64.3, unit: "만", source: "릴스 조회수.jpg"  },
 ];
 
-/* ── 채널별 콘텐츠 바 차트 데이터 ── */
-const barData = [
-  { label: "릴스 #1", sublabel: "단일 최고 기록", value: 891,   max: 891,  platform: "reels",  badge: "🏆" },
-  { label: "스레드",   sublabel: "누적 총 조회수",  value: 232,   max: 891,  platform: "thread", badge: null },
-  { label: "릴스 #2", sublabel: "조회수",          value: 119,   max: 891,  platform: "reels",  badge: null },
-  { label: "릴스 #3", sublabel: "조회수",          value: 70.1,  max: 891,  platform: "reels",  badge: null },
-  { label: "릴스 #4", sublabel: "조회수",          value: 64.3,  max: 891,  platform: "reels",  badge: null },
-  { label: "스레드",   sublabel: "30일 조회수",     value: 39,    max: 891,  platform: "thread", badge: null },
+// 스레드 지표 (스레드 조회수 1.jpg · 2.jpg에서 직접 확인)
+const threadsData = [
+  { icon: Eye,   label: "조회수 (누적)",  value: "192.8만", source: "스레드 조회수 1.jpg" },
+  { icon: Eye,   label: "조회수 (30일)", value: "39만",    source: "스레드 조회수 2.jpg" },
+  { icon: Heart, label: "반응 (누적)",   value: "1.3만",   source: "스레드 조회수 1.jpg" },
+  { icon: Heart, label: "반응 (30일)",  value: "2,857",   source: "스레드 조회수 2.jpg" },
+  { icon: Users, label: "팔로워",       value: "1.4만",   source: "스레드 조회수 1·2.jpg" },
 ];
 
-/* ── 플랫폼 비율 도넛 대체 (간단 비율 바) ── */
-const platformShare = [
-  { label: "릴스",   value: 1235, total: 1235 + 232, color: "#E8A020", icon: Play },
-  { label: "스레드", value: 232,  total: 1235 + 232, color: "#60A5FA", icon: AtSign },
-];
-
-const platformColor = {
-  reels:  { bar: "from-[#E8A020] to-[#F5C842]", text: "text-[#E8A020]", badge: "bg-[#E8A020]/15 text-[#E8A020]" },
-  thread: { bar: "from-[#3B82F6] to-[#60A5FA]", text: "text-[#60A5FA]", badge: "bg-blue-500/15 text-blue-300" },
-};
-
-/* ── 바 차트 아이템 ── */
-function BarItem({ item, delay }: { item: typeof barData[0]; delay: number }) {
+/* ── 릴스 바 아이템 ── */
+function ReelsBar({ item, delay, max }: { item: typeof reelsData[0]; delay: number; max: number }) {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const pct = (item.value / item.max) * 100;
-  const c = platformColor[item.platform as keyof typeof platformColor];
+  const pct = (item.value / max) * 100;
+  const isTop = item.value === max;
 
   return (
-    <div ref={ref} className="group">
+    <div ref={ref}>
       <div className="flex items-center justify-between mb-1.5">
         <div className="flex items-center gap-2">
-          <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${c.badge}`}>
-            {item.platform === "reels" ? "릴스" : "스레드"}
-          </span>
-          <span className="text-white/70 text-sm font-semibold tracking-tight">{item.label}</span>
-          {item.badge && <span className="text-xs">{item.badge}</span>}
-          <span className="text-white/30 text-xs tracking-tight hidden sm:inline">{item.sublabel}</span>
+          <Play size={10} className="text-[#E8A020]" fill="#E8A020" />
+          <span className="text-white/65 text-sm font-semibold tracking-tight">{item.label}</span>
+          {isTop && <span className="text-[10px] bg-[#E8A020]/20 text-[#E8A020] font-bold px-2 py-0.5 rounded-full">🏆 최고</span>}
         </div>
-        <span className={`font-black text-sm tracking-tight ${c.text}`}>
-          {item.value}만
+        <span className="text-[#E8A020] font-black text-sm tracking-tight">
+          {item.value}{item.unit}
         </span>
       </div>
-      {/* 바 트랙 */}
       <div className="h-2.5 bg-white/[0.06] rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={inView ? { width: `${pct}%` } : { width: 0 }}
           transition={{ duration: 1.1, delay, ease: [0.22, 1, 0.36, 1] }}
-          className={`h-full rounded-full bg-gradient-to-r ${c.bar} relative`}
+          className="h-full rounded-full bg-gradient-to-r from-[#E8A020] to-[#F5C842] relative"
         >
-          {/* 바 끝 글로우 */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-white/40 blur-sm" />
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-white/50 blur-sm" />
         </motion.div>
       </div>
     </div>
@@ -93,22 +78,19 @@ function BarItem({ item, delay }: { item: typeof barData[0]; delay: number }) {
 }
 
 export default function AchievementsSection() {
-  const kpiRefs = [
-    useCounter(1235, 1800, 0),
-    useCounter(891,  1600, 0),
-    useCounter(192.8,1600, 1),
-    useCounter(1.4,  1400, 1),
-  ];
+  const c891  = useCounter(891,  1500, 0);
+  const c1928 = useCounter(192.8, 1500, 1);
+  const c14   = useCounter(1.4,  1300, 1);
+  const c13   = useCounter(1.3,  1300, 1);
 
   return (
     <section className="py-20 sm:py-28 bg-[#080F1E] relative overflow-hidden">
-      {/* 배경 */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 opacity-[0.025]"
+        <div className="absolute inset-0 opacity-[0.02]"
           style={{ backgroundImage: "radial-gradient(circle,#E8A020 1px,transparent 1px)", backgroundSize: "40px 40px" }}
         />
         <div className="absolute top-0 right-0 w-[500px] h-[300px] bg-[#E8A020] opacity-[0.04] rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-blue-600 opacity-[0.04] rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[300px] bg-blue-500 opacity-[0.03] rounded-full blur-3xl" />
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
@@ -119,165 +101,151 @@ export default function AchievementsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-14"
+          className="mb-12"
         >
-          <div>
-            <span className="inline-flex items-center gap-2 bg-[#E8A020]/15 text-[#E8A020] text-xs font-bold px-3 py-1.5 rounded-full mb-4 border border-[#E8A020]/20 tracking-widest uppercase">
-              <Zap size={11} /> 누적 대행 성과
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
-              숫자로 보는
-              <br />
-              <span className="text-[#E8A020]">실제 운영 결과</span>
-            </h2>
-          </div>
-          <p className="text-white/35 text-sm tracking-tight max-w-xs text-right leading-relaxed hidden sm:block">
-            직접 운영·관리한 계정의<br />실측 데이터입니다
+          <span className="inline-flex items-center gap-2 bg-[#E8A020]/15 text-[#E8A020] text-xs font-bold px-3 py-1.5 rounded-full mb-4 border border-[#E8A020]/20 tracking-widest uppercase">
+            <Zap size={11} /> 실제 운영 성과
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+            스크린샷으로 확인하는
+            <br />
+            <span className="text-[#E8A020]">실측 데이터</span>
+          </h2>
+          <p className="text-white/30 text-sm mt-3 tracking-tight">
+            아래 수치는 모두 실제 운영 계정에서 직접 캡처한 숫자입니다
           </p>
         </motion.div>
 
-        {/* KPI 4개 */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-10">
-          {kpis.map((kpi, i) => {
-            const Icon = kpi.icon;
-            const { count, ref } = kpiRefs[i];
-            return (
-              <motion.div
-                key={kpi.label}
-                initial={{ opacity: 0, y: 20, scale: 0.92 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: i * 0.08 }}
-                ref={ref}
-                className="bg-white/[0.04] border border-white/[0.08] rounded-2xl p-5 hover:bg-white/[0.07] transition-colors"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <div className="w-8 h-8 bg-[#E8A020]/15 rounded-lg flex items-center justify-center">
-                    <Icon size={15} className="text-[#E8A020]" />
-                  </div>
-                  <TrendingUp size={13} className="text-emerald-400 opacity-70" />
-                </div>
-                <div className="font-black text-white tracking-tight leading-none mb-1"
-                  style={{ fontSize: "clamp(1.6rem,4vw,2.2rem)" }}>
-                  {kpi.decimals ? count.toFixed(kpi.decimals) : count.toLocaleString()}
-                  <span className="text-[#E8A020]">{kpi.unit}</span>
-                </div>
-                <div className="text-white/35 text-xs tracking-tight">{kpi.label}</div>
-              </motion.div>
-            );
-          })}
-        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
 
-        {/* 메인 컨텐츠: 바 차트 + 플랫폼 비율 */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-
-          {/* 바 차트 (2/3) */}
+          {/* ── 릴스 바 차트 ── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-2 bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6"
+            className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-6"
           >
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-2 mb-6">
+              <div className="w-7 h-7 bg-[#E8A020]/15 rounded-lg flex items-center justify-center">
+                <Play size={13} className="text-[#E8A020]" fill="#E8A020" />
+              </div>
               <div>
-                <p className="text-white/30 text-[11px] font-bold tracking-widest uppercase mb-1">콘텐츠별 조회수</p>
-                <h3 className="text-white font-black text-lg tracking-tight">채널 성과 비교</h3>
-              </div>
-              <div className="flex items-center gap-3 text-[11px]">
-                <span className="flex items-center gap-1.5 text-white/40">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#E8A020]" />릴스
-                </span>
-                <span className="flex items-center gap-1.5 text-white/40">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#60A5FA]" />스레드
-                </span>
+                <p className="text-white font-black tracking-tight">릴스 조회수</p>
+                <p className="text-white/30 text-xs tracking-tight">스크린샷 기준 4개 콘텐츠</p>
               </div>
             </div>
 
+            {/* 891만 Featured */}
+            <div ref={c891.ref} className="bg-gradient-to-br from-[#E8A020] to-[#F5C842] rounded-xl p-4 mb-5 relative overflow-hidden">
+              <div className="absolute -right-3 -top-3 w-16 h-16 bg-white/15 rounded-full" />
+              <p className="text-[#0B1F3A]/60 text-[11px] font-bold tracking-widest uppercase mb-1">단일 최고 기록 🏆</p>
+              <div className="text-[#0B1F3A] font-black leading-none tracking-tight" style={{ fontSize: "clamp(2rem,5vw,2.8rem)" }}>
+                {c891.count}<span className="text-2xl">만</span>
+              </div>
+              <p className="text-[#0B1F3A]/50 text-xs mt-1 font-semibold tracking-tight">조회수 · 릴스 조회수 4.jpg</p>
+            </div>
+
+            {/* 나머지 3개 바 */}
             <div className="space-y-4">
-              {barData.map((item, i) => (
-                <BarItem key={i} item={item} delay={0.15 + i * 0.12} />
+              {reelsData.slice(1).map((item, i) => (
+                <ReelsBar key={item.label} item={item} delay={0.2 + i * 0.12} max={891} />
               ))}
-            </div>
-
-            <div className="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
-              <span className="text-white/25 text-xs tracking-tight">단위: 만 (10,000)</span>
-              <span className="text-white/25 text-xs tracking-tight">최대: 891만</span>
             </div>
           </motion.div>
 
-          {/* 플랫폼 비율 + 총합 (1/3) */}
+          {/* ── 스레드 지표 ── */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="flex flex-col gap-4"
           >
-            {/* 총 조회수 */}
-            <div className="bg-gradient-to-br from-[#E8A020] to-[#F5C842] rounded-2xl p-6 relative overflow-hidden flex-1">
-              <div className="absolute -right-4 -top-4 w-24 h-24 bg-white/15 rounded-full" />
-              <div className="absolute -right-2 bottom-2 w-14 h-14 bg-white/10 rounded-full" />
-              <div className="relative">
-                <p className="text-[#0B1F3A]/60 text-xs font-bold tracking-widest uppercase mb-2">총 누적 조회수</p>
-                <div className="text-[#0B1F3A] font-black leading-none tracking-tight mb-1"
-                  style={{ fontSize: "clamp(2rem,5vw,2.8rem)" }}>
-                  1,235만+
-                </div>
-                <p className="text-[#0B1F3A]/50 text-sm font-semibold tracking-tight">릴스 + 스레드 합산</p>
-              </div>
-            </div>
-
-            {/* 플랫폼 비율 */}
+            {/* 스레드 헤더 카드 */}
             <div className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-5">
-              <p className="text-white/30 text-[11px] font-bold tracking-widest uppercase mb-4">플랫폼 비율</p>
-
-              {/* 스택 바 */}
-              <div className="h-3 rounded-full overflow-hidden flex mb-4">
-                {platformShare.map((p) => (
-                  <motion.div
-                    key={p.label}
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${(p.value / p.total) * 100}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, delay: p.label === "릴스" ? 0.2 : 0.5, ease: [0.22,1,0.36,1] }}
-                    style={{ backgroundColor: p.color }}
-                  />
-                ))}
+              <div className="flex items-center gap-2 mb-5">
+                <div className="w-7 h-7 bg-blue-500/15 rounded-lg flex items-center justify-center">
+                  <AtSign size={13} className="text-blue-400" />
+                </div>
+                <div>
+                  <p className="text-white font-black tracking-tight">스레드 운영 지표</p>
+                  <p className="text-white/30 text-xs tracking-tight">스레드 조회수 1·2.jpg 기준</p>
+                </div>
               </div>
 
-              <div className="space-y-3">
-                {platformShare.map((p) => {
-                  const Icon = p.icon;
-                  const pct = Math.round((p.value / p.total) * 100);
+              {/* 5개 지표 그리드 */}
+              <div className="grid grid-cols-2 gap-3">
+                {threadsData.map((item, i) => {
+                  const Icon = item.icon;
                   return (
-                    <div key={p.label} className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="w-5 h-5 rounded-md flex items-center justify-center" style={{ backgroundColor: p.color + "25" }}>
-                          <Icon size={10} style={{ color: p.color }} />
-                        </div>
-                        <span className="text-white/55 text-sm tracking-tight">{p.label}</span>
+                    <motion.div
+                      key={item.label}
+                      initial={{ opacity: 0, scale: 0.88 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ type: "spring", stiffness: 280, damping: 24, delay: 0.15 + i * 0.08 }}
+                      className={`bg-white/[0.04] border border-white/[0.07] rounded-xl p-3.5 ${i === 4 ? "col-span-2" : ""}`}
+                    >
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <Icon size={11} className="text-blue-400" />
+                        <span className="text-white/35 text-[10px] font-semibold tracking-tight">{item.label}</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-white/30 text-xs">{p.value}만</span>
-                        <span className="font-black text-sm tracking-tight" style={{ color: p.color }}>{pct}%</span>
+                      <div className="text-white font-black text-xl tracking-tight leading-none">
+                        {item.value}
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
             </div>
 
-            {/* 메모 */}
-            <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4">
-              <p className="text-white/25 text-[11px] leading-relaxed tracking-tight">
-                * 위 수치는 실제 운영 계정의<br />
-                측정 데이터 기준입니다.<br />
-                성과는 학원별로 달라질 수 있습니다.
-              </p>
+            {/* 스레드 조회수 카운터 */}
+            <div ref={c1928.ref} className="bg-white/[0.03] border border-white/[0.08] rounded-2xl p-5">
+              <p className="text-white/30 text-[11px] font-bold tracking-widest uppercase mb-3">스레드 누적 조회수</p>
+              <div className="flex items-end gap-4">
+                <div>
+                  <div className="text-blue-300 font-black tracking-tight leading-none" style={{ fontSize: "clamp(1.8rem,4vw,2.4rem)" }}>
+                    {c1928.count.toFixed(1)}<span className="text-xl">만</span>
+                  </div>
+                  <p className="text-white/25 text-xs mt-1 tracking-tight">스레드 조회수 1.jpg</p>
+                </div>
+                <div className="flex-1 h-px bg-white/[0.06]" />
+                <div className="text-right">
+                  <div className="text-white/50 font-black text-xl tracking-tight">39만</div>
+                  <p className="text-white/25 text-xs tracking-tight">30일 · 조회수 2.jpg</p>
+                </div>
+              </div>
+            </div>
+
+            {/* 팔로워·반응 카운터 */}
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { ref: c14.ref, value: c14.count.toFixed(1), unit: "만", label: "팔로워", source: "조회수 1·2.jpg", color: "text-[#E8A020]" },
+                { ref: c13.ref, value: c13.count.toFixed(1), unit: "만", label: "누적 반응", source: "조회수 1.jpg", color: "text-emerald-400" },
+              ].map((item) => (
+                <div key={item.label} ref={item.ref} className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4">
+                  <p className="text-white/30 text-[10px] font-bold tracking-widest uppercase mb-2">{item.label}</p>
+                  <div className={`font-black text-2xl tracking-tight leading-none ${item.color}`}>
+                    {item.value}<span className="text-base">{item.unit}</span>
+                  </div>
+                  <p className="text-white/20 text-[10px] mt-1 tracking-tight">{item.source}</p>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
+
+        {/* 하단 면책 */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="text-white/20 text-xs text-center mt-10 tracking-tight"
+        >
+          위 수치는 실제 운영 계정의 캡처 화면을 기반으로 합니다 · 성과는 학원별 상황에 따라 다를 수 있습니다
+        </motion.p>
       </div>
     </section>
   );
