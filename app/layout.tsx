@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 
 export const metadata: Metadata = {
   title: "학원 마케팅 전문 대행사 | 교육 브랜드 성장 파트너",
@@ -21,7 +22,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="h-full scroll-smooth">
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <ScrollProgressBar />
+        {children}
+      </body>
     </html>
   );
 }
