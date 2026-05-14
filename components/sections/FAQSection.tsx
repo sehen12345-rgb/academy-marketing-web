@@ -11,7 +11,7 @@ const faqs = [
   },
   {
     q: "광고비는 어떻게 책정되나요?",
-    a: "광고 상품(네이버 플레이스 CPC, 파워링크, 당근 광고)은 상담을 통해 학원 규모와 목표에 맞는 광고비를 포함한 올인원 가격으로 제안드립니다. 광고비를 별도로 내지 않아도 됩니다.",
+    a: "광고 상품(네이버 플레이스 CPC, 파워링크, 당근 광고)은 상담을 통해 학원 규모와 목표에 맞는 광고비 포함 올인원 가격으로 제안드립니다.",
   },
   {
     q: "블로그 포스팅은 직접 쓰는 건가요?",
@@ -35,7 +35,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <section className="py-20 sm:py-28 bg-white">
+    <section className="py-20 sm:py-28 bg-[#F4F8FF]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -44,10 +44,10 @@ export default function FAQSection() {
           transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
-          <span className="inline-block bg-slate-100 text-slate-600 text-sm font-semibold px-4 py-2 rounded-full mb-4 tracking-tight">
+          <span className="inline-block bg-[#E8A020]/15 text-[#C47D0A] text-sm font-semibold px-4 py-2 rounded-full mb-4 tracking-tight border border-[#E8A020]/30">
             자주 묻는 질문
           </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F3A] tracking-tight">
             FAQ
           </h2>
         </motion.div>
@@ -60,21 +60,22 @@ export default function FAQSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: index * 0.05 }}
-              className="border border-slate-200 rounded-2xl overflow-hidden"
+              className="bg-white border border-[#D6E6FF] rounded-2xl overflow-hidden"
             >
               <button
                 onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-slate-50 transition-colors"
+                className="w-full flex items-center justify-between px-6 py-5 text-left hover:bg-[#F4F8FF] transition-colors"
               >
-                <span className="font-semibold text-slate-900 text-sm sm:text-base tracking-tight pr-4">
+                <span className="font-semibold text-[#0B1F3A] text-sm sm:text-base tracking-tight pr-4">
                   {faq.q}
                 </span>
-                <span className="shrink-0 w-7 h-7 bg-slate-100 rounded-full flex items-center justify-center">
-                  {openIndex === index ? (
-                    <Minus size={14} className="text-slate-600" />
-                  ) : (
-                    <Plus size={14} className="text-slate-600" />
-                  )}
+                <span className={`shrink-0 w-7 h-7 rounded-full flex items-center justify-center transition-colors ${
+                  openIndex === index ? "bg-[#0B1F3A]" : "bg-[#F4F8FF] border border-[#D6E6FF]"
+                }`}>
+                  {openIndex === index
+                    ? <Minus size={13} className="text-[#E8A020]" />
+                    : <Plus size={13} className="text-[#1B3D6E]" />
+                  }
                 </span>
               </button>
 
@@ -87,7 +88,7 @@ export default function FAQSection() {
                     transition={{ duration: 0.25, ease: "easeInOut" }}
                     className="overflow-hidden"
                   >
-                    <p className="px-6 pb-5 text-slate-500 text-sm leading-relaxed border-t border-slate-100 pt-4">
+                    <p className="px-6 pb-5 text-[#5C6B7E] text-sm leading-relaxed border-t border-[#D6E6FF] pt-4 tracking-tight">
                       {faq.a}
                     </p>
                   </motion.div>

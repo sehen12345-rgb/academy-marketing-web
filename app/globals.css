@@ -2,34 +2,47 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #2563eb;
-  --color-primary-dark: #1d4ed8;
-  --color-secondary: #f59e0b;
-  --color-secondary-dark: #d97706;
-  --color-slate-50: #f8fafc;
-  --color-slate-100: #f1f5f9;
-  --color-slate-200: #e2e8f0;
-  --color-slate-500: #64748b;
-  --color-slate-700: #334155;
-  --color-slate-900: #0f172a;
+  /* Navy - 신뢰·권위·학문 */
+  --color-navy-950: #060F1E;
+  --color-navy-900: #0B1F3A;
+  --color-navy-800: #0F2D52;
+  --color-navy-700: #1B3D6E;
+  --color-navy-600: #2453A0;
+  --color-navy-100: #D6E6FF;
+  --color-navy-50:  #F4F8FF;
+
+  /* Gold - 성취·프리미엄·합격 */
+  --color-gold-600: #C47D0A;
+  --color-gold-500: #E8A020;
+  --color-gold-400: #F0B429;
+  --color-gold-100: #FEF3C7;
+  --color-gold-50:  #FFFBEB;
+
+  /* CTA Blue */
+  --color-cta:      #1A56DB;
+  --color-cta-dark: #1447BC;
+
+  /* Neutral */
+  --color-ink-900:  #0D1B2A;
+  --color-ink-700:  #2D3E52;
+  --color-ink-500:  #5C6B7E;
+  --color-ink-300:  #A8B8C8;
+  --color-ink-100:  #E8EDF3;
+  --color-ink-50:   #F5F7FA;
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
+  --foreground: #0D1B2A;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
-    system-ui, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Pretendard Variable', Pretendard, -apple-system,
+    BlinkMacSystemFont, system-ui, sans-serif;
   color: var(--foreground);
   background: var(--background);
   -webkit-font-smoothing: antialiased;
