@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
 import { ArrowRight, CheckCircle, Volume2, VolumeX } from "lucide-react";
+
+const videos = ["/hero-video-classroom.mp4", "/hero-video2.mp4", "/hero-video.mp4"];
 
 const highlights = [
   "광고비 포함 올인원 가격",
@@ -43,11 +45,21 @@ export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const [videoIdx, setVideoIdx] = useState(0);
 
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end start"] });
-  const videoScale  = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const overlayOpacity = useTransform(scrollYProgress, [0, 0.6], [0.55, 0.85]);
-  const contentY    = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+  const videoScale      = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const overlayOpacity  = useTransform(scrollYProgress, [0, 0.6], [0.55, 0.85]);
+  const contentY        = useTransform(scrollYProgress, [0, 1], ["0%", "18%"]);
+
+  /* 영상 자동 교체 (영상 끝나면 다음으로) */
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const next = () => setVideoIdx((i) => (i + 1) % videos.length);
+    el.addEventListener("ended", next);
+    return () => el.removeEventListener("ended", next);
+  }, [videoIdx]);
 
   const toggleMute = () => {
     if (videoRef.current) {
@@ -59,17 +71,23 @@ export default function HeroSection() {
   return (
     <section ref={sectionRef} className="relative min-h-screen flex flex-col overflow-hidden bg-[#0B1F3A]">
 
-      {/* ── 배경 비디오 ── */}
+      {/* ── 배경 비디오 (교차 재생) ── */}
       <motion.div style={{ scale: videoScale }} className="absolute inset-0 origin-center">
-        <video
-          ref={videoRef}
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover"
-          src="/hero-video.mp4"
-        />
+        <AnimatePresence mode="wait">
+          <motion.video
+            key={videoIdx}
+            ref={videoRef}
+            autoPlay
+            muted
+            playsInline
+            className="absolute inset-0 w-full h-full object-cover"
+            src={videos[videoIdx]}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.2 }}
+          />
+        </AnimatePresence>
       </motion.div>
 
       {/* ── 그라디언트 오버레이 ── */}
