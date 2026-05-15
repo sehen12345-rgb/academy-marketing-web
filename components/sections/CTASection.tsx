@@ -116,6 +116,29 @@ export default function CTASection() {
           <p className="text-white/30 text-sm mt-8 tracking-tight">
             평일 09:00 - 18:00 운영 · 카카오톡 채널 상담 가능
           </p>
+
+          {/* 리스크 리버설 배지 */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.6 }}
+            className="flex flex-wrap justify-center gap-3 mt-8"
+          >
+            {[
+              "✓ 위약금 없음",
+              "✓ 광고비 100% 투명 공개",
+              "✓ 영업 전화 없음",
+              "✓ 24시간 내 견적서",
+            ].map((badge) => (
+              <span
+                key={badge}
+                className="text-xs text-white/50 border border-white/10 px-3 py-1.5 rounded-full tracking-tight"
+              >
+                {badge}
+              </span>
+            ))}
+          </motion.div>
         </motion.div>
       </div>
     </section>

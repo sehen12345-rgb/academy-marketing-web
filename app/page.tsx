@@ -7,6 +7,8 @@ import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import WhyUsSection from "@/components/sections/WhyUsSection";
 import AchievementsSection from "@/components/sections/AchievementsSection";
+import ComparisonSection from "@/components/sections/ComparisonSection";
+import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import PricingSection from "@/components/sections/PricingSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import FAQSection from "@/components/sections/FAQSection";
@@ -23,6 +25,8 @@ export default function Home() {
         <ServicesSection />
         <WhyUsSection />
         <AchievementsSection />
+        <ComparisonSection />
+        <TestimonialsSection />
         <PricingSection />
         <ProcessSection />
         <FAQSection />
