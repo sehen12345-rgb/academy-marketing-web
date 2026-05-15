@@ -9,10 +9,10 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 bg-[#E8A020] rounded-lg flex items-center justify-center">
-                <span className="text-[#0B1F3A] font-black text-base">M</span>
+                <span className="text-[#0B1F3A] font-black text-sm">현</span>
               </div>
               <span className="font-bold text-white text-lg tracking-tight">
-                마케팅<span className="text-[#E8A020]">파트너</span>
+                현역<span className="text-[#E8A020]">오빠</span>
               </span>
             </div>
             <p className="text-sm leading-relaxed tracking-tight">
@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/5 pt-6 text-xs text-center tracking-tight">
-          © 2025 마케팅파트너. All rights reserved.
+          © 2026 현역오빠. All rights reserved.
         </div>
       </div>
     </footer>

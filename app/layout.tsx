@@ -3,15 +3,22 @@ import "./globals.css";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 
 export const metadata: Metadata = {
-  title: "학원 마케팅 전문 대행사 | 교육 브랜드 성장 파트너",
+  metadataBase: new URL("https://academy-marketing-web.vercel.app"),
+  title: "현역오빠 | 학원 마케팅 전문 대행사",
   description:
-    "학원을 위한 맞춤 마케팅 대행 서비스. 웹페이지 제작, 스레드·블로그 운영, 네이버 광고, 당근 광고까지 원스톱으로 관리해드립니다.",
-  keywords: "학원마케팅, 교육마케팅, 학원광고, 네이버플레이스, 블로그마케팅, 스레드운영",
+    "릴스 891만뷰 달성! 현역오빠의 학원 맞춤 마케팅. 웹페이지·SNS·네이버·당근 광고까지 원스톱. 광고비 포함 올인원 가격.",
+  keywords: "현역오빠, 학원마케팅, 학원SNS대행, 학원광고, 네이버플레이스, 스레드운영, 교육마케팅",
   openGraph: {
-    title: "학원 마케팅 전문 대행사",
-    description: "학원 원장님을 위한 맞춤 마케팅 솔루션",
+    title: "현역오빠 | 학원 마케팅 전문 대행사",
+    description: "릴스 891만뷰 · 스레드 192.8만 조회 · 학원 원장님을 위한 맞춤 마케팅 솔루션",
     type: "website",
     locale: "ko_KR",
+    siteName: "현역오빠",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "현역오빠 | 학원 마케팅 전문 대행사",
+    description: "릴스 891만뷰 · 스레드 192.8만 조회 · 학원 원장님을 위한 맞춤 마케팅 솔루션",
   },
 };
 

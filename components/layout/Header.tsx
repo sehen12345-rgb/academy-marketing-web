@@ -35,10 +35,10 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
             <div className="w-9 h-9 bg-[#E8A020] rounded-lg flex items-center justify-center">
-              <span className="text-[#0B1F3A] font-black text-base">M</span>
+              <span className="text-[#0B1F3A] font-black text-sm">현</span>
             </div>
             <span className="font-bold text-white text-lg tracking-tight">
-              마케팅<span className="text-[#E8A020]">파트너</span>
+              현역<span className="text-[#E8A020]">오빠</span>
             </span>
           </Link>
 

@@ -68,7 +68,7 @@ export default function ComparisonSection() {
           <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F3A] tracking-tight leading-tight">
             직접 운영 vs 일반 대행사 vs
             <br />
-            <span className="text-[#E8A020]">마케팅파트너</span>
+            <span className="text-[#E8A020]">현역오빠</span>
           </h2>
           <p className="text-[#5C6B7E] text-sm mt-3 tracking-tight">학원 마케팅에 특화된 이유가 여기 있습니다</p>
         </motion.div>
@@ -86,7 +86,7 @@ export default function ComparisonSection() {
             {[
               { label: "직접 운영",      sub: "원장님 혼자" },
               { label: "일반 대행사",    sub: "업종 무관" },
-              { label: "마케팅파트너",   sub: "학원 전문", highlight: true },
+              { label: "현역오빠",   sub: "학원 전문", highlight: true },
             ].map((col) => (
               <div key={col.label} className={`py-4 text-center ${col.highlight ? "bg-[#E8A020]" : ""}`}>
                 <p className={`font-black text-sm tracking-tight ${col.highlight ? "text-[#0B1F3A]" : "text-white"}`}>
