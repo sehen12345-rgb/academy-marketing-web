@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Globe, MessageCircle, FileText, MapPin, Search, Target, TrendingUp, Users, ArrowRight } from "lucide-react";
+import { Globe, MessageCircle, FileText, MapPin, Search, Target, TrendingUp, Users, ArrowRight, Video } from "lucide-react";
 
 const services = [
   { icon: Globe,         num: "01", title: "웹페이지 제작",       desc: "학원 맞춤 홈페이지. PC·모바일 완벽 대응.",         price: "200만원",     tag: "일회성",    back: "모바일 최적화 반응형 디자인으로 학부모 신뢰도를 높입니다." },
@@ -13,6 +13,7 @@ const services = [
   { icon: Target,        num: "06", title: "당근 광고",           desc: "지역 기반 광고. 학원 주변 학부모 직접 타겟팅.",   price: "상담 후 결정", tag: "지역기반",  back: "반경 설정으로 우리 학원 주변 학부모에게만 노출합니다." },
   { icon: TrendingUp,   num: "07", title: "플레이스 상위 노출",  desc: "네이버 플레이스 순위 상승. 검증된 실행사 연계.",   price: "상담 후 결정", tag: "외주연계",  back: "플레이스 리뷰·저장수를 높여 자연 순위를 끌어올립니다." },
   { icon: Users,         num: "08", title: "카페 바이럴",         desc: "지역 맘카페 커뮤니티 바이럴. 자연스러운 입소문.", price: "상담 후 결정", tag: "바이럴",    back: "지역 맘카페에서 신뢰도 높은 자연스러운 후기를 만듭니다." },
+  { icon: Video,         num: "09", title: "숏폼 영상 제작",      desc: "릴스·유튜브 숏츠 직접 제작. 학원 홍보 영상 바이럴.", price: "상담 후 결정", tag: "영상",      back: "891만 뷰 달성 릴스 제작 경험. 학부모 눈길을 사로잡는 숏폼 콘텐츠를 만듭니다." },
 ];
 
 function FlipCard({ service, index }: { service: typeof services[0]; index: number }) {
@@ -122,7 +123,7 @@ export default function ServicesSection() {
           <p className="text-[#5C6B7E] text-sm mt-3 tracking-tight">카드에 마우스를 올리면 상세 정보가 나타납니다</p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {services.map((service, index) => (
             <FlipCard key={service.title} service={service} index={index} />
           ))}

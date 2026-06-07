@@ -56,7 +56,18 @@ export default function Header() {
           </nav>
 
           {/* CTA */}
-          <div className="hidden md:block">
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="https://open.kakao.com/o/XXXXXXXX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 bg-[#FEE500] text-[#3A1D1D] text-sm font-bold px-4 py-2.5 rounded-full hover:bg-[#F5DC00] transition-colors tracking-tight"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#3A1D1D">
+                <path d="M12 3C6.477 3 2 6.477 2 11c0 2.89 1.657 5.424 4.162 6.962-.178.667-.647 2.415-.742 2.789-.118.463.17.457.358.332.147-.097 2.34-1.594 3.287-2.238.626.09 1.27.137 1.935.137 5.523 0 10-3.477 10-8C22 6.477 17.523 3 12 3z"/>
+              </svg>
+              카톡 상담
+            </a>
             <Link
               href="/contact"
               className="bg-[#E8A020] text-[#0B1F3A] text-sm font-bold px-5 py-2.5 rounded-full hover:bg-[#F0B429] transition-colors tracking-tight"
@@ -90,9 +101,21 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="https://open.kakao.com/o/XXXXXXXX"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-[#FEE500] text-[#3A1D1D] text-sm font-bold px-5 py-3 rounded-full text-center mt-2 tracking-tight"
+              onClick={() => setIsOpen(false)}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#3A1D1D">
+                <path d="M12 3C6.477 3 2 6.477 2 11c0 2.89 1.657 5.424 4.162 6.962-.178.667-.647 2.415-.742 2.789-.118.463.17.457.358.332.147-.097 2.34-1.594 3.287-2.238.626.09 1.27.137 1.935.137 5.523 0 10-3.477 10-8C22 6.477 17.523 3 12 3z"/>
+              </svg>
+              카카오톡 빠른 상담
+            </a>
             <Link
               href="/contact"
-              className="bg-[#E8A020] text-[#0B1F3A] text-sm font-bold px-5 py-3 rounded-full text-center mt-2 tracking-tight"
+              className="bg-[#E8A020] text-[#0B1F3A] text-sm font-bold px-5 py-3 rounded-full text-center tracking-tight"
               onClick={() => setIsOpen(false)}
             >
               무료 상담 신청

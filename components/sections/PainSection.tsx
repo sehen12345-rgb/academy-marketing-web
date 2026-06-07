@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AlertCircle, TrendingDown, Clock } from "lucide-react";
+import { AlertCircle, TrendingDown, Clock, Users } from "lucide-react";
 
 const pains = [
   {
@@ -18,6 +18,16 @@ const pains = [
     icon: Clock,
     title: "수업 준비도 바쁜데\n마케팅까지 직접 할 시간이 없어요",
     desc: "원장님이 교육에만 집중해야 하는데, 포스팅·댓글·광고 체크로 하루가 다 가요.",
+  },
+  {
+    icon: Users,
+    title: "경쟁 학원은 SNS 팔로워가\n수천 명인데 우리는 0명이에요",
+    desc: "옆 학원은 릴스에 댓글이 넘치고 학부모 DM도 오는데, 우리 계정은 아무도 모릅니다.",
+  },
+  {
+    icon: TrendingDown,
+    title: "이전 대행사는 학원을 몰라서\n결국 계약만 해지했어요",
+    desc: "업종 무관 대행사는 학부모 심리를 모릅니다. 일반 카페 홍보하듯 학원을 올리면 효과가 없어요.",
   },
 ];
 
@@ -81,7 +91,7 @@ export default function PainSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {pains.map((pain, index) => {
             const Icon = pain.icon;
             return (

@@ -60,18 +60,18 @@ export default function CTASection() {
             transition={{ duration: 2.5, repeat: Infinity }}
           >
             <Gift size={14} />
-            무료 상담 신청 시 맞춤 마케팅 전략 제안서 제공
+            무료 마케팅 진단 + 맞춤 전략 제안서 제공
           </motion.div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-5 leading-tight tracking-tight">
-            지금 무료 상담을
+            지금 우리 학원
             <br />
-            받아보세요
+            <span className="text-[#E8A020]">무료 마케팅 진단</span> 받으세요
           </h2>
           <p className="text-white/50 text-lg mb-10 leading-relaxed tracking-tight">
-            학원 마케팅 고민, 저희가 해결해드립니다.
+            10분 상담으로 어디서 문의가 새고 있는지 찾아드립니다.
             <br />
-            상담 후 24시간 내 맞춤 견적서를 보내드립니다.
+            24시간 내 맞춤 견적서 + 진단 리포트를 보내드립니다.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -92,7 +92,7 @@ export default function CTASection() {
                   href="/contact"
                   className="relative inline-flex items-center justify-center gap-2 bg-[#E8A020] text-[#0B1F3A] font-black px-8 py-4 rounded-full hover:bg-[#F0B429] transition-colors text-base tracking-tight shadow-lg shadow-[#E8A020]/30"
                 >
-                  무료 상담 신청하기
+                  무료 진단 신청하기
                   <motion.span
                     animate={{ x: [0, 4, 0] }}
                     transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
@@ -105,16 +105,21 @@ export default function CTASection() {
 
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <a
-                href="tel:010-0000-0000"
-                className="inline-flex items-center justify-center gap-2 border border-white/20 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors text-base tracking-tight"
+                href="https://open.kakao.com/o/XXXXXXXX"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 bg-[#FEE500] text-[#3A1D1D] font-bold px-8 py-4 rounded-full hover:bg-[#F5DC00] transition-colors text-base tracking-tight"
               >
-                전화 상담
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#3A1D1D">
+                  <path d="M12 3C6.477 3 2 6.477 2 11c0 2.89 1.657 5.424 4.162 6.962-.178.667-.647 2.415-.742 2.789-.118.463.17.457.358.332.147-.097 2.34-1.594 3.287-2.238.626.09 1.27.137 1.935.137 5.523 0 10-3.477 10-8C22 6.477 17.523 3 12 3z"/>
+                </svg>
+                카카오톡 상담
               </a>
             </motion.div>
           </div>
 
           <p className="text-white/30 text-sm mt-8 tracking-tight">
-            평일 09:00 - 18:00 운영 · 카카오톡 채널 상담 가능
+            평일 09:00 - 18:00 운영 · 카카오톡 채널 24시간 접수
           </p>
 
           {/* 리스크 리버설 배지 */}

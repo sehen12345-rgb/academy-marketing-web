@@ -152,6 +152,11 @@ export default function TestimonialsSection() {
               <p className="text-[#E8A020] font-black text-2xl tracking-tight">93%</p>
               <p className="text-white/30 text-[10px] mt-1 tracking-tight">3개월 이상 유지율</p>
             </div>
+            <div className="w-px h-10 bg-white/10" />
+            <div className="text-center">
+              <p className="text-[#E8A020] font-black text-2xl tracking-tight">23+</p>
+              <p className="text-white/30 text-[10px] mt-1 tracking-tight">파트너 학원</p>
+            </div>
           </div>
         </motion.div>
       </div>

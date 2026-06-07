@@ -4,11 +4,11 @@ import { motion } from "framer-motion";
 import { MessageSquare, FileCheck, PenTool, Rocket, BarChart2 } from "lucide-react";
 
 const steps = [
-  { icon: MessageSquare, num: "01", title: "무료 상담",  desc: "학원 현황·목표 파악. 전화·방문 모두 가능." },
-  { icon: FileCheck,     num: "02", title: "맞춤 제안서", desc: "최적화된 플랜과 상세 견적 제안." },
-  { icon: PenTool,       num: "03", title: "계약 체결",  desc: "서비스·가격 확정 후 계약 진행." },
-  { icon: Rocket,        num: "04", title: "운영 시작",  desc: "빠른 세팅 완료 후 마케팅 즉시 가동." },
-  { icon: BarChart2,     num: "05", title: "성과 리포트", desc: "정기 데이터 공유 및 전략 점검." },
+  { icon: MessageSquare, num: "01", title: "무료 상담",  desc: "학원 현황·목표 파악. 전화·방문 모두 가능.", duration: "약 30분" },
+  { icon: FileCheck,     num: "02", title: "맞춤 제안서", desc: "최적화된 플랜과 상세 견적 제안.", duration: "24시간 이내" },
+  { icon: PenTool,       num: "03", title: "계약 체결",  desc: "서비스·가격 확정 후 계약 진행.", duration: "당일 가능" },
+  { icon: Rocket,        num: "04", title: "운영 시작",  desc: "빠른 세팅 완료 후 마케팅 즉시 가동.", duration: "3~5 영업일" },
+  { icon: BarChart2,     num: "05", title: "성과 리포트", desc: "정기 데이터 공유 및 전략 점검.", duration: "매월 제공" },
 ];
 
 export default function ProcessSection() {
@@ -48,7 +48,12 @@ export default function ProcessSection() {
                   <div className="hidden lg:block absolute -right-2.5 top-1/2 -translate-y-1/2 z-10 text-[#A8B8C8] font-bold text-xl">›</div>
                 )}
 
-                <span className="text-xs font-black text-[#E8A020] tracking-widest mb-3 block">{step.num}</span>
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-black text-[#E8A020] tracking-widest">{step.num}</span>
+                  <span className="text-[10px] font-bold bg-[#E8A020]/10 text-[#C47D0A] border border-[#E8A020]/20 px-2 py-0.5 rounded-full tracking-tight">
+                    {step.duration}
+                  </span>
+                </div>
 
                 <div className="w-10 h-10 bg-[#0B1F3A] rounded-xl flex items-center justify-center mb-4">
                   <Icon size={18} className="text-[#E8A020]" />

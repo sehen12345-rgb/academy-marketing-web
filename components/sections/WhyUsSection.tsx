@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ShieldCheck, Zap, BarChart3, HeartHandshake } from "lucide-react";
+import { ShieldCheck, Zap, BarChart3, HeartHandshake, Hammer } from "lucide-react";
 
 const reasons = [
   {
@@ -31,6 +31,13 @@ const reasons = [
     desc: "웹, SNS, 광고까지 한 팀이 운영합니다. 여러 업체 관리할 필요 없이 저희 한 곳만 연락하세요.",
     color: "text-blue-400",
     glow: "shadow-blue-400/30",
+  },
+  {
+    icon: Hammer,
+    title: "대행사가 아닌 직접 실행사",
+    desc: "외주 없이 저희가 직접 콘텐츠를 만들고 광고를 집행합니다. 중간 수수료 0원, 속도와 품질 모두 챙깁니다.",
+    color: "text-purple-400",
+    glow: "shadow-purple-400/30",
   },
 ];
 
@@ -64,7 +71,7 @@ export default function WhyUsSection() {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {reasons.map((reason, index) => {
             const Icon = reason.icon;
             return (

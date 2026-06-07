@@ -4,15 +4,18 @@ import { motion } from "framer-motion";
 import { Check, X, Minus } from "lucide-react";
 
 const rows = [
-  { label: "마케팅 전담 담당자",       diy: false,  generic: "partial", us: true },
-  { label: "학원 업종 특화 전략",       diy: false,  generic: false,     us: true },
-  { label: "광고비 포함 올인원 가격",   diy: false,  generic: false,     us: true },
-  { label: "월간 성과 리포트 제공",     diy: false,  generic: "partial", us: true },
-  { label: "SNS + 광고 + 웹 원스톱",   diy: false,  generic: false,     us: true },
-  { label: "학부모 타겟 콘텐츠 전략",  diy: false,  generic: false,     us: true },
-  { label: "24시간 내 견적서 발송",     diy: "partial", generic: false,  us: true },
-  { label: "숨겨진 추가 비용 없음",     diy: true,   generic: false,     us: true },
-  { label: "원장님 수업 집중 가능",     diy: false,  generic: true,      us: true },
+  { label: "마케팅 전담 담당자",          diy: false,     generic: "partial", us: true },
+  { label: "학원 업종 특화 전략",          diy: false,     generic: false,     us: true },
+  { label: "광고비 포함 올인원 가격",      diy: false,     generic: false,     us: true },
+  { label: "월간 성과 리포트 제공",        diy: false,     generic: "partial", us: true },
+  { label: "SNS + 광고 + 웹 원스톱",      diy: false,     generic: false,     us: true },
+  { label: "학부모 타겟 콘텐츠 전략",     diy: false,     generic: false,     us: true },
+  { label: "24시간 내 견적서 발송",        diy: "partial", generic: false,     us: true },
+  { label: "숨겨진 추가 비용 없음",        diy: true,      generic: false,     us: true },
+  { label: "원장님 수업 집중 가능",        diy: false,     generic: true,      us: true },
+  { label: "후불제 (선납금 없음)",         diy: true,      generic: false,     us: true },
+  { label: "직접 실행 (외주 없음)",        diy: false,     generic: false,     us: true },
+  { label: "KPI 미달성 시 무료 재조정",   diy: false,     generic: false,     us: true },
 ];
 
 type CellValue = boolean | "partial";

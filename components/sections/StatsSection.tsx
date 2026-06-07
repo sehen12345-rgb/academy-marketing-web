@@ -4,10 +4,10 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stats = [
-  { value: "8",    suffix: "가지", label: "서비스 라인업",      desc: "웹부터 광고까지 원스톱",    ring: 100 },
-  { value: "100",  suffix: "%",    label: "광고비 투명 공개",   desc: "숨겨진 추가 비용 없음",     ring: 100 },
-  { value: "48",   suffix: "만~",  label: "SNS 월 운영 시작가", desc: "주 3회 포스팅 포함",        ring: 48  },
-  { value: "24",   suffix: "h",    label: "견적서 발송",        desc: "상담 후 24시간 내 발송",    ring: 80  },
+  { value: "23",   suffix: "+",   label: "파트너 학원",        desc: "현재 함께하는 학원 수",     ring: 100 },
+  { value: "8.3",  suffix: "배",  label: "평균 문의 증가",     desc: "계약 3개월 평균 성과",      ring: 83  },
+  { value: "93",   suffix: "%",   label: "3개월 유지율",       desc: "만족해서 계속 맡기는 비율", ring: 93  },
+  { value: "24",   suffix: "h",   label: "견적서 발송",        desc: "상담 후 24시간 내 발송",    ring: 80  },
 ];
 
 function RingStat({ stat, index }: { stat: typeof stats[0]; index: number }) {

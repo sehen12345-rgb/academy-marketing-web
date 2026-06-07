@@ -121,11 +121,15 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="mb-8"
+            className="mb-8 flex flex-wrap gap-3"
           >
             <span className="inline-flex items-center gap-2 border border-[#E8A020]/50 text-[#E8A020] text-sm font-semibold px-4 py-2 rounded-full bg-[#E8A020]/10 backdrop-blur-sm tracking-tight">
               <span className="w-1.5 h-1.5 bg-[#E8A020] rounded-full animate-pulse" />
               학원 마케팅 전문 대행사
+            </span>
+            <span className="inline-flex items-center gap-2 border border-emerald-400/40 text-emerald-300 text-sm font-semibold px-4 py-2 rounded-full bg-emerald-400/10 backdrop-blur-sm tracking-tight">
+              <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
+              현재 23개 학원 운영 중
             </span>
           </motion.div>
 
@@ -239,9 +243,9 @@ export default function HeroSection() {
             className="mt-14 flex flex-wrap gap-8 border-t border-white/10 pt-8"
           >
             {[
-              { value: "8가지",    label: "서비스 라인업" },
-              { value: "광고비 포함", label: "올인원 가격제" },
-              { value: "24시간",   label: "견적서 발송" },
+              { value: "23+",   label: "파트너 학원" },
+              { value: "8.3배", label: "평균 문의 증가" },
+              { value: "93%",   label: "3개월 유지율" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
