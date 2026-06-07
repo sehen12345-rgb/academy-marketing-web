@@ -4,6 +4,7 @@ import FloatingContact from "@/components/ui/FloatingContact";
 import HeroSection from "@/components/sections/HeroSection";
 import TrustBadgesSection from "@/components/sections/TrustBadgesSection";
 import PainSection from "@/components/sections/PainSection";
+import StatementSection from "@/components/sections/StatementSection";
 import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import WhyUsSection from "@/components/sections/WhyUsSection";
@@ -29,6 +30,7 @@ export default function Home() {
         <TrustBadgesSection />
         <PortfolioSection />
         <PainSection />
+        <StatementSection />
         <StatsSection />
         <ServicesSection />
         <WhyUsSection />
