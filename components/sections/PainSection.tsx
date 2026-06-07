@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AlertCircle, TrendingDown, Clock, Users } from "lucide-react";
+import { AlertCircle, TrendingDown, Clock, Users, ShieldX } from "lucide-react";
 
 const pains = [
   {
@@ -28,6 +28,12 @@ const pains = [
     icon: TrendingDown,
     title: "이전 대행사는 학원을 몰라서\n결국 계약만 해지했어요",
     desc: "업종 무관 대행사는 학부모 심리를 모릅니다. 일반 카페 홍보하듯 학원을 올리면 효과가 없어요.",
+  },
+  {
+    icon: ShieldX,
+    title: "마케팅 대행사를\n믿기가 어렵습니다",
+    desc: "계약만 하면 나 몰라라, 성과 없어도 비용 청구. 그런 대행사가 너무 많다는 거 저희도 압니다.",
+    highlight: true,
   },
 ];
 
@@ -102,7 +108,11 @@ export default function PainSection() {
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.5, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -6, scale: 1.02 }}
-                className="bg-white/[0.05] border border-white/10 rounded-2xl p-7 hover:bg-white/[0.09] hover:border-white/20 transition-colors"
+                className={`rounded-2xl p-7 transition-colors ${
+                  pain.highlight
+                    ? "bg-[#E8A020]/15 border border-[#E8A020]/40 hover:bg-[#E8A020]/20"
+                    : "bg-white/[0.05] border border-white/10 hover:bg-white/[0.09] hover:border-white/20"
+                }`}
               >
                 <motion.div
                   className="w-11 h-11 bg-[#E8A020]/20 rounded-xl flex items-center justify-center mb-5"
@@ -120,15 +130,20 @@ export default function PainSection() {
           })}
         </div>
 
-        <motion.p
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-12 text-white/70 text-lg font-semibold tracking-tight"
+          className="text-center mt-12"
         >
-          이 고민들, 저희가 전부 해결해드립니다.
-        </motion.p>
+          <p className="text-white/70 text-lg font-semibold tracking-tight mb-3">
+            이 고민들, 저희가 전부 해결해드립니다.
+          </p>
+          <p className="text-[#E8A020] text-sm font-bold tracking-tight">
+            ✓ 후불제 &nbsp;·&nbsp; ✓ 위약금 없음 &nbsp;·&nbsp; ✓ 학원 전문 &nbsp;·&nbsp; ✓ 직접 실행
+          </p>
+        </motion.div>
       </div>
     </section>
   );

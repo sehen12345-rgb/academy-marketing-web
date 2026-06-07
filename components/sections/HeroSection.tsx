@@ -15,9 +15,9 @@ const highlights = [
 
 /* 글자별 stagger */
 const titleLines = [
-  { text: "학원 마케팅,",        gold: false },
-  { text: "이제 전문가에게",     gold: true  },
-  { text: "맡기세요",           gold: false },
+  { text: "문의 8배,",          gold: false },
+  { text: "원생 2배.",          gold: true  },
+  { text: "이게 학원 전문입니다", gold: false },
 ];
 
 const containerVariants = {
@@ -169,9 +169,9 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 1.1 }}
             className="text-white/65 text-lg sm:text-xl leading-relaxed mb-8 max-w-lg tracking-tight"
           >
-            웹페이지·SNS·네이버·당근 광고까지
+            일반 대행사는 학부모 심리를 모릅니다.
             <br />
-            학원에 딱 맞는 마케팅을 한 곳에서 해결합니다.
+            현역오빠는 <span className="text-white font-semibold">학원만</span> 합니다 — 웹, SNS, 광고까지.
           </motion.p>
 
           {/* 체크리스트 */}
@@ -202,35 +202,40 @@ export default function HeroSection() {
             transition={{ duration: 0.5, delay: 1.5 }}
             className="flex flex-wrap gap-3"
           >
-            {/* 펄스 링 CTA */}
+            {/* 카카오톡 주 CTA */}
             <div className="relative inline-flex">
               <motion.div
-                className="absolute inset-0 rounded-full bg-[#E8A020]"
+                className="absolute inset-0 rounded-full bg-[#FEE500]"
                 animate={{ scale: [1, 1.45, 1.45], opacity: [0.5, 0, 0] }}
                 transition={{ duration: 2, repeat: Infinity, ease: "easeOut", delay: 0.5 }}
               />
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
-                <Link
-                  href="/contact"
-                  className="relative inline-flex items-center gap-2 bg-[#E8A020] text-[#0B1F3A] font-black px-8 py-4 rounded-full hover:bg-[#F0B429] transition-colors text-base tracking-tight shadow-xl shadow-[#E8A020]/30"
+                <a
+                  href="https://open.kakao.com/o/XXXXXXXX"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative inline-flex items-center gap-2 bg-[#FEE500] text-[#3A1D1D] font-black px-8 py-4 rounded-full hover:bg-[#F5DC00] transition-colors text-base tracking-tight shadow-xl shadow-[#FEE500]/30"
                 >
-                  무료 상담 신청
-                  <motion.span
-                    animate={{ x: [0, 4, 0] }}
-                    transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
-                  >
-                    <ArrowRight size={17} />
-                  </motion.span>
-                </Link>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#3A1D1D">
+                    <path d="M12 3C6.477 3 2 6.477 2 11c0 2.89 1.657 5.424 4.162 6.962-.178.667-.647 2.415-.742 2.789-.118.463.17.457.358.332.147-.097 2.34-1.594 3.287-2.238.626.09 1.27.137 1.935.137 5.523 0 10-3.477 10-8C22 6.477 17.523 3 12 3z"/>
+                  </svg>
+                  카카오톡 무료 상담
+                </a>
               </motion.div>
             </div>
 
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <Link
-                href="#services"
+                href="/contact"
                 className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors text-base tracking-tight backdrop-blur-sm"
               >
-                서비스 보기
+                무료 진단 신청
+                <motion.span
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <ArrowRight size={17} />
+                </motion.span>
               </Link>
             </motion.div>
           </motion.div>

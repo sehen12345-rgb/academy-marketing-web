@@ -175,7 +175,7 @@ export default function PortfolioSection() {
                 className="font-black text-[2.4rem] leading-none tracking-tight text-white"
                 style={{ textShadow: "0 0 30px rgba(232,160,32,0.4)" }}
               >
-                <span className="text-[#E8A020]">800</span>만+
+                <span className="text-[#E8A020]">1,235</span>만+
               </div>
             </div>
           </motion.div>
@@ -291,9 +291,9 @@ export default function PortfolioSection() {
           </div>
           <div className="flex items-center gap-6">
             {[
-              { label: "단일 최고", value: "380만" },
+              { label: "단일 최고", value: "891만" },
               { label: "콘텐츠 수", value: "6개" },
-              { label: "총 조회수", value: "800만+" },
+              { label: "총 조회수", value: "1,235만+" },
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-[#E8A020] font-black text-lg tracking-tight leading-none">{s.value}</div>
