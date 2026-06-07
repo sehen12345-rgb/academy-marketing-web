@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "현역오빠 | 학원 마케팅 전문 대행사";
+export const alt = "에듀라이즈 | 학원 마케팅 전문 대행사";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -84,11 +84,11 @@ export default function OGImage() {
                   justifyContent: "center",
                 }}
               >
-                <span style={{ color: "#0B1F3A", fontWeight: 900, fontSize: "22px" }}>현</span>
+                <span style={{ color: "#0B1F3A", fontWeight: 900, fontSize: "22px" }}>E</span>
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <span style={{ color: "white", fontWeight: 900, fontSize: "26px", letterSpacing: "-0.5px" }}>
-                  현역<span style={{ color: "#E8A020" }}>오빠</span>
+                  에듀<span style={{ color: "#E8A020" }}>라이즈</span>
                 </span>
                 <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "13px", marginTop: "1px" }}>
                   학원 마케팅 전문 대행사
@@ -134,7 +134,7 @@ export default function OGImage() {
                   letterSpacing: "-2px",
                 }}
               >
-                학원 마케팅,
+                문의 8배,
               </span>
               <span
                 style={{
@@ -145,7 +145,7 @@ export default function OGImage() {
                   letterSpacing: "-2px",
                 }}
               >
-                이제 전문가에게
+                원생 2배.
               </span>
               <span
                 style={{
@@ -156,7 +156,7 @@ export default function OGImage() {
                   letterSpacing: "-2px",
                 }}
               >
-                맡기세요
+                이게 학원 전문입니다
               </span>
             </div>
 

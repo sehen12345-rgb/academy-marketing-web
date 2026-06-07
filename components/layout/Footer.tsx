@@ -9,10 +9,10 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2.5 mb-4">
               <div className="w-9 h-9 bg-[#E8A020] rounded-lg flex items-center justify-center">
-                <span className="text-[#0B1F3A] font-black text-sm">현</span>
+                <span className="text-[#0B1F3A] font-black text-sm">E</span>
               </div>
               <span className="font-bold text-white text-lg tracking-tight">
-                현역<span className="text-[#E8A020]">오빠</span>
+                에듀<span className="text-[#E8A020]">라이즈</span>
               </span>
             </div>
             <p className="text-sm leading-relaxed tracking-tight">
@@ -54,9 +54,9 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-6 text-xs tracking-tight">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <p className="text-center sm:text-left">© 2026 현역오빠. All rights reserved.</p>
+            <p className="text-center sm:text-left">© 2026 에듀라이즈. All rights reserved.</p>
             <p className="text-center sm:text-right leading-relaxed">
-              상호: 몽타주ai &nbsp;|&nbsp; 대표: 정필권 &nbsp;|&nbsp; 사업자등록번호: 755-74-00514
+              상호: 에듀라이즈 &nbsp;|&nbsp; 대표: 정필권 &nbsp;|&nbsp; 사업자등록번호: 755-74-00514
               <br className="sm:hidden" />
               <span className="hidden sm:inline"> &nbsp;|&nbsp; </span>
               충청남도 천안시 동남구 대흥로 321, 508-7호 (성황동, 수평빌딩)

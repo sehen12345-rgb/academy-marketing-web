@@ -79,7 +79,7 @@ export default function GuaranteeSection() {
         >
           <span className="inline-flex items-center gap-2 bg-[#E8A020]/15 text-[#E8A020] text-sm font-bold px-4 py-2 rounded-full mb-4 border border-[#E8A020]/20 tracking-tight">
             <ShieldCheck size={14} />
-            현역오빠 4대 보장
+            에듀라이즈 4대 보장
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
             계약 전에 확인하세요.

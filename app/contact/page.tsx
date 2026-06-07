@@ -165,7 +165,7 @@ export default function ContactPage() {
                     <p className="text-xs font-semibold text-[#8BA0B4] tracking-tight">사업자 정보</p>
                   </div>
                   <ul className="space-y-1 text-xs text-[#A8B8C8] tracking-tight">
-                    <li>상호: 몽타주ai</li>
+                    <li>상호: 에듀라이즈</li>
                     <li>대표: 정필권</li>
                     <li>사업자등록번호: 755-74-00514</li>
                     <li className="leading-snug pt-0.5">
