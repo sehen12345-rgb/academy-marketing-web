@@ -37,42 +37,16 @@ const pains = [
   },
 ];
 
-/* 부유하는 블롭 정의 */
-const blobs = [
-  { size: "w-48 h-48", top: "10%",  left: "-5%",  color: "bg-[#E8A020]", opacity: "opacity-[0.05]", duration: 8,  delay: 0   },
-  { size: "w-32 h-32", top: "60%",  left: "5%",   color: "bg-blue-400",  opacity: "opacity-[0.04]", duration: 7,  delay: 1.5 },
-  { size: "w-56 h-56", top: "20%",  left: "85%",  color: "bg-[#E8A020]", opacity: "opacity-[0.04]", duration: 9,  delay: 0.8 },
-  { size: "w-24 h-24", top: "70%",  left: "80%",  color: "bg-purple-400",opacity: "opacity-[0.04]", duration: 6,  delay: 2   },
-  { size: "w-40 h-40", top: "45%",  left: "45%",  color: "bg-blue-300",  opacity: "opacity-[0.03]", duration: 10, delay: 0.3 },
-];
-
 export default function PainSection() {
   return (
-    <section className="py-20 sm:py-28 bg-[#0F2D52] relative overflow-hidden">
-      {/* 도트 배경 */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{ backgroundImage: "radial-gradient(circle, #fff 1px, transparent 1px)", backgroundSize: "32px 32px" }}
+    <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #0B1F3A 1px, transparent 1px)",
+          backgroundSize: "32px 32px",
+        }}
       />
-
-      {/* 부유하는 블롭들 */}
-      {blobs.map((blob, i) => (
-        <motion.div
-          key={i}
-          className={`absolute ${blob.size} ${blob.color} ${blob.opacity} rounded-full blur-3xl pointer-events-none`}
-          style={{ top: blob.top, left: blob.left }}
-          animate={{
-            y: [0, -24, 0],
-            x: [0, 12, 0],
-            scale: [1, 1.1, 1],
-          }}
-          transition={{
-            duration: blob.duration,
-            delay: blob.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div
@@ -83,48 +57,58 @@ export default function PainSection() {
           className="text-center mb-14"
         >
           <motion.span
-            className="inline-block bg-[#E8A020]/15 text-[#E8A020] text-sm font-semibold px-4 py-2 rounded-full mb-4 tracking-tight border border-[#E8A020]/20"
+            className="inline-block bg-[#E8A020]/10 text-[#C8821A] text-sm font-semibold px-4 py-2 rounded-full mb-4 tracking-tight border border-[#E8A020]/25"
             whileInView={{ scale: [0.8, 1.05, 1] }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             이런 고민, 있으시죠?
           </motion.span>
-          <h2 className="text-3xl sm:text-4xl font-black text-white tracking-tight leading-tight">
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F3A] tracking-tight leading-tight">
             학원 원장님이라면
             <br />
             누구나 겪는 문제들
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {pains.map((pain, index) => {
             const Icon = pain.icon;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 40, scale: 0.9 }}
+                initial={{ opacity: 0, y: 32, scale: 0.96 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.5, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -6, scale: 1.02 }}
-                className={`rounded-2xl p-7 transition-colors ${
+                transition={{ duration: 0.45, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                whileHover={{ y: -4 }}
+                className={`rounded-2xl p-7 border transition-all duration-200 ${
                   pain.highlight
-                    ? "bg-[#E8A020]/15 border border-[#E8A020]/40 hover:bg-[#E8A020]/20"
-                    : "bg-white/[0.05] border border-white/10 hover:bg-white/[0.09] hover:border-white/20"
+                    ? "bg-[#0B1F3A] border-[#0B1F3A]"
+                    : "bg-[#F7F9FC] border-[#E2E8F0] hover:border-[#C5D5EA] hover:bg-[#EEF4FB]"
                 }`}
               >
-                <motion.div
-                  className="w-11 h-11 bg-[#E8A020]/20 rounded-xl flex items-center justify-center mb-5"
-                  whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                  transition={{ duration: 0.4 }}
+                <div
+                  className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${
+                    pain.highlight ? "bg-[#E8A020]/20" : "bg-[#E8A020]/10"
+                  }`}
                 >
                   <Icon size={20} className="text-[#E8A020]" />
-                </motion.div>
-                <h3 className="font-bold text-white text-base mb-3 leading-snug whitespace-pre-line tracking-tight">
+                </div>
+                <h3
+                  className={`font-bold text-base mb-3 leading-snug whitespace-pre-line tracking-tight ${
+                    pain.highlight ? "text-white" : "text-[#0B1F3A]"
+                  }`}
+                >
                   {pain.title}
                 </h3>
-                <p className="text-white/50 text-sm leading-relaxed">{pain.desc}</p>
+                <p
+                  className={`text-sm leading-relaxed tracking-tight ${
+                    pain.highlight ? "text-white/65" : "text-[#5C6B7E]"
+                  }`}
+                >
+                  {pain.desc}
+                </p>
               </motion.div>
             );
           })}
@@ -137,10 +121,10 @@ export default function PainSection() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="text-center mt-12"
         >
-          <p className="text-white/70 text-lg font-semibold tracking-tight mb-3">
+          <p className="text-[#0B1F3A] text-lg font-semibold tracking-tight mb-3">
             이 고민들, 저희가 전부 해결해드립니다.
           </p>
-          <p className="text-[#E8A020] text-sm font-bold tracking-tight">
+          <p className="text-[#C8821A] text-sm font-bold tracking-tight">
             ✓ 후불제 &nbsp;·&nbsp; ✓ 위약금 없음 &nbsp;·&nbsp; ✓ 학원 전문 &nbsp;·&nbsp; ✓ 직접 실행
           </p>
         </motion.div>

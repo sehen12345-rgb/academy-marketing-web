@@ -49,7 +49,7 @@ const guarantees = [
 
 export default function GuaranteeSection() {
   return (
-    <section className="py-20 sm:py-28 bg-[#080F1E] relative overflow-hidden">
+    <section className="py-20 sm:py-28 bg-[#0B1F3A] relative overflow-hidden">
       {/* 배경 장식 */}
       <div className="absolute inset-0 pointer-events-none">
         <div

@@ -26,16 +26,13 @@ function RingStat({ stat, index }: { stat: typeof stats[0]; index: number }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="flex flex-col items-center gap-3"
     >
-      {/* SVG 링 */}
       <div className="relative w-24 h-24">
         <svg className="w-full h-full -rotate-90" viewBox="0 0 88 88">
-          {/* 배경 링 */}
-          <circle cx="44" cy="44" r={radius} fill="none" stroke="rgba(255,255,255,0.12)" strokeWidth="5" />
-          {/* 진행 링 */}
+          <circle cx="44" cy="44" r={radius} fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="5" />
           <motion.circle
             cx="44" cy="44" r={radius}
             fill="none"
-            stroke="#0B1F3A"
+            stroke="#E8A020"
             strokeWidth="5"
             strokeLinecap="round"
             strokeDasharray={circumference}
@@ -44,18 +41,17 @@ function RingStat({ stat, index }: { stat: typeof stats[0]; index: number }) {
             transition={{ duration: 1.4, delay: index * 0.1 + 0.2, ease: [0.22, 1, 0.36, 1] }}
           />
         </svg>
-        {/* 중앙 숫자 */}
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center">
-            <span className="text-[#0B1F3A] font-black text-xl leading-none tracking-tight">{stat.value}</span>
-            <span className="text-[#0B1F3A]/70 font-bold text-xs">{stat.suffix}</span>
+            <span className="text-white font-black text-xl leading-none tracking-tight">{stat.value}</span>
+            <span className="text-white/60 font-bold text-xs">{stat.suffix}</span>
           </div>
         </div>
       </div>
 
       <div className="text-center">
-        <div className="text-[#0B1F3A] font-bold text-sm tracking-tight">{stat.label}</div>
-        <div className="text-[#0B1F3A]/60 text-xs tracking-tight mt-0.5">{stat.desc}</div>
+        <div className="text-white font-bold text-sm tracking-tight">{stat.label}</div>
+        <div className="text-white/45 text-xs tracking-tight mt-0.5">{stat.desc}</div>
       </div>
     </motion.div>
   );
@@ -63,19 +59,17 @@ function RingStat({ stat, index }: { stat: typeof stats[0]; index: number }) {
 
 export default function StatsSection() {
   return (
-    <section className="bg-[#E8A020] py-14 relative overflow-hidden">
-      {/* 배경 장식 */}
+    <section className="bg-[#0B1F3A] py-14 relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-0 left-1/4 w-48 h-48 bg-white/10 rounded-full blur-3xl"
-          animate={{ x: [0, 30, 0], scale: [1, 1.1, 1] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        <div
+          className="absolute inset-0 opacity-[0.03]"
+          style={{
+            backgroundImage: "radial-gradient(circle, #E8A020 1px, transparent 1px)",
+            backgroundSize: "36px 36px",
+          }}
         />
-        <motion.div
-          className="absolute bottom-0 right-1/4 w-32 h-32 bg-[#0B1F3A]/10 rounded-full blur-2xl"
-          animate={{ x: [0, -20, 0], scale: [1, 1.2, 1] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
+        <div className="absolute top-0 right-1/4 w-48 h-48 bg-[#E8A020]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-1/4 w-32 h-32 bg-blue-400/5 rounded-full blur-2xl" />
       </div>
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
