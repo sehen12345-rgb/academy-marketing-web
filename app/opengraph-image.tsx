@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "에듀라이즈 | 학원 마케팅 전문 대행사";
+export const alt = "에듀플로우 | 학원 마케팅 전문 대행사";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

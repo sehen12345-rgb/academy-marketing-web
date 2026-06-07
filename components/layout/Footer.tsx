@@ -39,7 +39,7 @@ export default function Footer() {
               </a>
               {/* 인스타그램 */}
               <a
-                href="https://instagram.com/edurise_official"
+                href="https://instagram.com/eduflow_official"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
@@ -51,7 +51,7 @@ export default function Footer() {
               </a>
               {/* 스레드 */}
               <a
-                href="https://threads.net/@edurise_official"
+                href="https://threads.net/@eduflow_official"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center hover:bg-white/20 transition-colors"
@@ -94,9 +94,9 @@ export default function Footer() {
 
         <div className="border-t border-white/5 pt-6 text-xs tracking-tight">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-            <p className="text-center sm:text-left">© 2026 에듀라이즈. All rights reserved.</p>
+            <p className="text-center sm:text-left">© 2026 에듀플로우. All rights reserved.</p>
             <p className="text-center sm:text-right leading-relaxed">
-              상호: 에듀라이즈 &nbsp;|&nbsp; 대표: 정필권 &nbsp;|&nbsp; 사업자등록번호: 755-74-00514
+              상호: 에듀플로우 &nbsp;|&nbsp; 대표: 정필권 &nbsp;|&nbsp; 사업자등록번호: 755-74-00514
               <br className="sm:hidden" />
               <span className="hidden sm:inline"> &nbsp;|&nbsp; </span>
               충청남도 천안시 동남구 대흥로 321, 508-7호 (성황동, 수평빌딩)

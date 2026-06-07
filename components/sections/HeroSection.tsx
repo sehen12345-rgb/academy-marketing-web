@@ -171,7 +171,7 @@ export default function HeroSection() {
           >
             일반 대행사는 학부모 심리를 모릅니다.
             <br />
-            에듀라이즈는 <span className="text-white font-semibold">학원만</span> 합니다 — 웹, SNS, 광고까지.
+            에듀플로우는 <span className="text-white font-semibold">학원만</span> 합니다 — 웹, SNS, 광고까지.
           </motion.p>
 
           {/* 체크리스트 */}
