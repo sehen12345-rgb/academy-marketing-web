@@ -13,7 +13,7 @@ export default function Footer() {
                 <span className="text-[#0B1F3A] font-black text-sm">E</span>
               </div>
               <span className="font-bold text-white text-lg tracking-tight">
-                에듀<span className="text-[#E8A020]">라이즈</span>
+                에듀<span className="text-[#E8A020]">플로우</span>
               </span>
             </div>
             <p className="text-sm leading-relaxed tracking-tight mb-5">
