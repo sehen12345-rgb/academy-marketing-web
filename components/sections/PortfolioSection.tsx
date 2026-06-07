@@ -102,32 +102,15 @@ export default function PortfolioSection() {
   return (
     <section
       ref={ref}
-      className="py-16 sm:py-24 bg-[#080E1C] relative overflow-hidden"
+      className="py-16 sm:py-24 bg-white relative overflow-hidden"
     >
-      {/* ── 배경 사선 레이어 ── */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {/* 점 그리드 */}
-        <div
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: "radial-gradient(circle, #E8A020 1px, transparent 1px)",
-            backgroundSize: "36px 36px",
-          }}
-        />
-        {/* 대각선 스트라이프 */}
-        <div
-          className="absolute inset-0 opacity-[0.025]"
-          style={{
-            backgroundImage:
-              "repeating-linear-gradient(45deg, #E8A020 0px, #E8A020 1px, transparent 1px, transparent 40px)",
-          }}
-        />
-        {/* 중앙 글로우 */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[500px] bg-[#E8A020] opacity-[0.06] rounded-full blur-[100px]" />
-        {/* 코너 악센트 */}
-        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-600 opacity-[0.04] rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-[#E8A020] opacity-[0.05] rounded-full blur-3xl translate-x-1/4 translate-y-1/4" />
-      </div>
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage: "radial-gradient(circle, #0B1F3A 1px, transparent 1px)",
+          backgroundSize: "36px 36px",
+        }}
+      />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
 
@@ -144,7 +127,7 @@ export default function PortfolioSection() {
             </span>
 
             {/* 슬래시 타이틀 */}
-            <h2 className="text-[clamp(2rem,5vw,3.4rem)] font-black text-white leading-[1.05] tracking-tight">
+            <h2 className="text-[clamp(2rem,5vw,3.4rem)] font-black text-[#0B1F3A] leading-[1.05] tracking-tight">
               <span className="block">이게 바로</span>
               <span className="block relative">
                 <span className="relative z-10 text-[#E8A020]">우리가 만든 결과</span>
@@ -156,7 +139,7 @@ export default function PortfolioSection() {
                   className="absolute bottom-0 left-0 right-0 h-[4px] bg-[#E8A020]/40 rounded-full origin-left"
                 />
               </span>
-              <span className="block text-white/30 text-[clamp(0.9rem,2vw,1.2rem)] font-bold mt-2 tracking-normal">
+              <span className="block text-[#8B9BB4] text-[clamp(0.9rem,2vw,1.2rem)] font-bold mt-2 tracking-normal">
                 직접 기획·촬영·편집한 릴스 콘텐츠입니다
               </span>
             </h2>
@@ -169,12 +152,9 @@ export default function PortfolioSection() {
             transition={{ type: "spring", stiffness: 200, damping: 18, delay: 0.3 }}
             className="flex-shrink-0 text-right"
           >
-            <div className="inline-block bg-[#E8A020]/10 border border-[#E8A020]/25 rounded-2xl px-6 py-4">
-              <p className="text-[#E8A020]/60 text-[10px] font-black tracking-widest uppercase mb-1">총 조회수</p>
-              <div
-                className="font-black text-[2.4rem] leading-none tracking-tight text-white"
-                style={{ textShadow: "0 0 30px rgba(232,160,32,0.4)" }}
-              >
+            <div className="inline-block bg-[#FFF8EC] border border-[#E8A020]/30 rounded-2xl px-6 py-4 shadow-sm">
+              <p className="text-[#C8821A] text-[10px] font-black tracking-widest uppercase mb-1">총 조회수</p>
+              <div className="font-black text-[2.4rem] leading-none tracking-tight text-[#0B1F3A]">
                 <span className="text-[#E8A020]">1,235</span>만+
               </div>
             </div>
@@ -281,11 +261,11 @@ export default function PortfolioSection() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-white/[0.07] pt-6"
+          className="mt-10 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-[#E2E8F0] pt-6"
         >
           <div className="flex items-center gap-2.5">
-            <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
-            <p className="text-white/35 text-sm tracking-tight">
+            <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+            <p className="text-[#8B9BB4] text-sm tracking-tight">
               실제 운영 계정에서 직접 캡처한 조회수입니다
             </p>
           </div>
@@ -297,7 +277,7 @@ export default function PortfolioSection() {
             ].map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-[#E8A020] font-black text-lg tracking-tight leading-none">{s.value}</div>
-                <div className="text-white/25 text-[10px] mt-0.5 tracking-tight">{s.label}</div>
+                <div className="text-[#A0AEC0] text-[10px] mt-0.5 tracking-tight">{s.label}</div>
               </div>
             ))}
           </div>
