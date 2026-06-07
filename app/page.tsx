@@ -15,6 +15,7 @@ import TeamSection from "@/components/sections/TeamSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import FAQSection from "@/components/sections/FAQSection";
 import GuaranteeSection from "@/components/sections/GuaranteeSection";
+import PledgeSection from "@/components/sections/PledgeSection";
 import CTASection from "@/components/sections/CTASection";
 
 export default function Home() {
@@ -32,6 +33,7 @@ export default function Home() {
         <ComparisonSection />
         <TestimonialsSection />
         <GuaranteeSection />
+        <PledgeSection />
         <PricingSection />
         <TeamSection />
         <ProcessSection />
