@@ -1,20 +1,22 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Globe, MessageCircle, FileText, MapPin, Search, Target, TrendingUp, Users, ArrowRight, Video } from "lucide-react";
 
 const services = [
-  { icon: Globe,         num: "01", title: "웹페이지 제작",       desc: "학원 맞춤 홈페이지. PC·모바일 완벽 대응.",         price: "200만원",     tag: "일회성",    back: "모바일 최적화 반응형 디자인으로 학부모 신뢰도를 높입니다." },
-  { icon: MessageCircle, num: "02", title: "스레드 운영",         desc: "프로필·댓글·리틀리 포함. 주 3회 정기 포스팅.",     price: "48만원/월",   tag: "월정기",    back: "트렌디한 스레드 채널로 학원 브랜드를 자연스럽게 알립니다." },
-  { icon: FileText,      num: "03", title: "블로그 포스팅",       desc: "공장형 5만원 / 프리미엄 10만원. 키워드 최적화.",   price: "5~10만원/건", tag: "건별",      back: "상위 노출 키워드를 공략해 검색 유입을 늘립니다." },
-  { icon: MapPin,        num: "04", title: "네이버 플레이스 CPC", desc: "플레이스 광고 운용. 광고비 포함 올인원.",          price: "상담 후 결정", tag: "광고비포함", back: "지도 검색 상단 노출로 근처 학부모를 직접 타겟팅합니다." },
-  { icon: Search,        num: "05", title: "네이버 파워링크",     desc: "키워드 검색 광고. 학원 타겟 키워드 전문 운용.",    price: "상담 후 결정", tag: "광고비포함", back: "구매 의도가 높은 검색 키워드에서 학원을 노출시킵니다." },
-  { icon: Target,        num: "06", title: "당근 광고",           desc: "지역 기반 광고. 학원 주변 학부모 직접 타겟팅.",   price: "상담 후 결정", tag: "지역기반",  back: "반경 설정으로 우리 학원 주변 학부모에게만 노출합니다." },
-  { icon: TrendingUp,   num: "07", title: "플레이스 상위 노출",  desc: "네이버 플레이스 순위 상승. 검증된 실행사 연계.",   price: "상담 후 결정", tag: "외주연계",  back: "플레이스 리뷰·저장수를 높여 자연 순위를 끌어올립니다." },
-  { icon: Users,         num: "08", title: "카페 바이럴",         desc: "지역 맘카페 커뮤니티 바이럴. 자연스러운 입소문.", price: "상담 후 결정", tag: "바이럴",    back: "지역 맘카페에서 신뢰도 높은 자연스러운 후기를 만듭니다." },
-  { icon: Video,         num: "09", title: "숏폼 영상 제작",      desc: "릴스·유튜브 숏츠 직접 제작. 학원 홍보 영상 바이럴.", price: "상담 후 결정", tag: "영상",      back: "891만 뷰 달성 릴스 제작 경험. 학부모 눈길을 사로잡는 숏폼 콘텐츠를 만듭니다." },
+  { icon: Globe,         num: "01", title: "웹페이지 제작",       desc: "학원 맞춤 홈페이지. PC·모바일 완벽 대응.",         price: "200만원",     tag: "일회성",    cat: "웹",   back: "모바일 최적화 반응형 디자인으로 학부모 신뢰도를 높입니다." },
+  { icon: MessageCircle, num: "02", title: "스레드 운영",         desc: "프로필·댓글·리틀리 포함. 주 3회 정기 포스팅.",     price: "48만원/월",   tag: "월정기",    cat: "SNS",  back: "트렌디한 스레드 채널로 학원 브랜드를 자연스럽게 알립니다." },
+  { icon: Video,         num: "03", title: "숏폼 영상 제작",      desc: "릴스·유튜브 숏츠 직접 제작. 891만 뷰 달성 경험.",  price: "상담 후 결정", tag: "영상",      cat: "SNS",  back: "학부모 눈길을 사로잡는 숏폼 콘텐츠를 직접 제작합니다." },
+  { icon: FileText,      num: "04", title: "블로그 포스팅",       desc: "공장형 5만원 / 프리미엄 10만원. 키워드 최적화.",   price: "5~10만원/건", tag: "건별",      cat: "SNS",  back: "상위 노출 키워드를 공략해 검색 유입을 늘립니다." },
+  { icon: MapPin,        num: "05", title: "네이버 플레이스 CPC", desc: "플레이스 광고 운용. 광고비 포함 올인원.",          price: "상담 후 결정", tag: "광고비포함", cat: "광고",  back: "지도 검색 상단 노출로 근처 학부모를 직접 타겟팅합니다." },
+  { icon: Search,        num: "06", title: "네이버 파워링크",     desc: "키워드 검색 광고. 학원 타겟 키워드 전문 운용.",    price: "상담 후 결정", tag: "광고비포함", cat: "광고",  back: "구매 의도가 높은 검색 키워드에서 학원을 노출시킵니다." },
+  { icon: Target,        num: "07", title: "당근 광고",           desc: "지역 기반 광고. 학원 주변 학부모 직접 타겟팅.",   price: "상담 후 결정", tag: "지역기반",  cat: "광고",  back: "반경 설정으로 우리 학원 주변 학부모에게만 노출합니다." },
+  { icon: TrendingUp,    num: "08", title: "플레이스 상위 노출",  desc: "네이버 플레이스 순위 상승. 검증된 실행사 연계.",   price: "상담 후 결정", tag: "외주연계",  cat: "광고",  back: "플레이스 리뷰·저장수를 높여 자연 순위를 끌어올립니다." },
+  { icon: Users,         num: "09", title: "카페 바이럴",         desc: "지역 맘카페 커뮤니티 바이럴. 자연스러운 입소문.", price: "상담 후 결정", tag: "바이럴",    cat: "SNS",  back: "지역 맘카페에서 신뢰도 높은 자연스러운 후기를 만듭니다." },
 ];
+
+const TABS = ["전체", "SNS", "광고", "웹"] as const;
 
 function FlipCard({ service, index }: { service: typeof services[0]; index: number }) {
   const [flipped, setFlipped] = useState(false);
@@ -88,21 +90,18 @@ function FlipCard({ service, index }: { service: typeof services[0]; index: numb
 }
 
 export default function ServicesSection() {
+  const [activeTab, setActiveTab] = useState<typeof TABS[number]>("전체");
+
+  const filtered = activeTab === "전체"
+    ? services
+    : services.filter((s) => s.cat === activeTab);
+
   return (
     <section id="services" className="py-20 sm:py-28 bg-[#F4F8FF] relative overflow-hidden">
-      {/* 배경 장식 */}
-      <div className="absolute inset-0 pointer-events-none">
-        <motion.div
-          className="absolute top-10 right-10 w-64 h-64 bg-[#E8A020] opacity-[0.04] rounded-full blur-3xl"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.04, 0.07, 0.04] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-10 left-10 w-48 h-48 bg-[#0B1F3A] opacity-[0.04] rounded-full blur-3xl"
-          animate={{ scale: [1, 1.3, 1], opacity: [0.04, 0.08, 0.04] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-        />
-      </div>
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.03]"
+        style={{ backgroundImage: "radial-gradient(circle, #0B1F3A 1px, transparent 1px)", backgroundSize: "36px 36px" }}
+      />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative">
         <motion.div
@@ -110,24 +109,54 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-14"
+          className="mb-10"
         >
           <span className="inline-block bg-[#E8A020]/15 text-[#C47D0A] text-sm font-semibold px-4 py-2 rounded-full mb-4 tracking-tight border border-[#E8A020]/30">
             서비스 라인업
           </span>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F3A] tracking-tight leading-tight">
-            학원에 필요한 마케팅,
-            <br />
-            전부 여기 있습니다
-          </h2>
-          <p className="text-[#5C6B7E] text-sm mt-3 tracking-tight">카드에 마우스를 올리면 상세 정보가 나타납니다</p>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F3A] tracking-tight leading-tight">
+                학원에 필요한 마케팅,
+                <br />
+                전부 여기 있습니다
+              </h2>
+              <p className="text-[#5C6B7E] text-sm mt-3 tracking-tight">카드에 마우스를 올리면 상세 정보가 나타납니다</p>
+            </div>
+
+            {/* 탭 필터 */}
+            <div className="flex gap-1.5 bg-white rounded-full p-1 border border-[#D6E6FF] shadow-sm self-start sm:self-auto">
+              {TABS.map((tab) => (
+                <button
+                  key={tab}
+                  onClick={() => setActiveTab(tab)}
+                  className={`px-4 py-1.5 rounded-full text-sm font-bold tracking-tight transition-all duration-200 ${
+                    activeTab === tab
+                      ? "bg-[#0B1F3A] text-white shadow-sm"
+                      : "text-[#5C6B7E] hover:text-[#0B1F3A]"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {services.map((service, index) => (
-            <FlipCard key={service.title} service={service} index={index} />
-          ))}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {filtered.map((service, index) => (
+              <FlipCard key={service.title} service={service} index={index} />
+            ))}
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
