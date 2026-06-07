@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
+
+const GA_ID = "G-XXXXXXXXXX"; // Google Analytics 측정 ID — 실제 ID로 교체 필요
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://academy-marketing-web.vercel.app"),
@@ -29,6 +32,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko" className="h-full scroll-smooth">
+      <head>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="ga-init" strategy="afterInteractive">{`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', '${GA_ID}');
+        `}</Script>
+      </head>
       <body className="min-h-full flex flex-col">
         <ScrollProgressBar />
         {children}

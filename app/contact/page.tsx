@@ -20,9 +20,12 @@ const services = [
   "기타",
 ];
 
+const FORMSPREE_ID = "xpwzgkjb"; // Formspree 폼 ID — 실제 ID로 교체 필요
+
 export default function ContactPage() {
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
     name: "",
     academy: "",
@@ -38,10 +41,31 @@ export default function ContactPage() {
     );
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: 실제 폼 전송 로직 연결 (EmailJS, Formspree 등)
-    setSubmitted(true);
+    setLoading(true);
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          담당자이름: form.name,
+          학원명: form.academy,
+          연락처: form.phone,
+          관심서비스: selectedServices.join(", "),
+          추가문의: form.message,
+        }),
+      });
+      if (res.ok) {
+        setSubmitted(true);
+      } else {
+        alert("전송 중 오류가 발생했습니다. 카카오톡으로 문의해 주세요.");
+      }
+    } catch {
+      alert("네트워크 오류가 발생했습니다. 카카오톡으로 문의해 주세요.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -295,10 +319,11 @@ export default function ContactPage() {
 
                       <button
                         type="submit"
-                        className="w-full flex items-center justify-center gap-2 bg-[#E8A020] text-[#0B1F3A] font-black py-4 rounded-xl hover:bg-[#F0B429] transition-colors text-base tracking-tight shadow-lg shadow-[#E8A020]/20"
+                        disabled={loading}
+                        className="w-full flex items-center justify-center gap-2 bg-[#E8A020] text-[#0B1F3A] font-black py-4 rounded-xl hover:bg-[#F0B429] disabled:opacity-60 disabled:cursor-not-allowed transition-colors text-base tracking-tight shadow-lg shadow-[#E8A020]/20"
                       >
                         <Send size={18} />
-                        상담 신청하기
+                        {loading ? "전송 중..." : "상담 신청하기"}
                       </button>
 
                       <p className="text-center text-xs text-[#A8B8C8] tracking-tight">

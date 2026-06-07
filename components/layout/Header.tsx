@@ -5,10 +5,11 @@ import Link from "next/link";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { href: "#services", label: "서비스" },
-  { href: "#pricing",  label: "요금제" },
-  { href: "#process",  label: "진행 방식" },
-  { href: "/contact",  label: "문의하기" },
+  { href: "#services",      label: "서비스" },
+  { href: "#pricing",       label: "요금제" },
+  { href: "#testimonials",  label: "후기" },
+  { href: "#process",       label: "진행 방식" },
+  { href: "/contact",       label: "문의하기" },
 ];
 
 export default function Header() {

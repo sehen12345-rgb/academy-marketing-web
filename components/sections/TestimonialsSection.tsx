@@ -46,7 +46,7 @@ function Stars() {
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-20 sm:py-28 bg-[#F4F8FF] relative overflow-hidden">
+    <section id="testimonials" className="py-20 sm:py-28 bg-[#F4F8FF] relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         <motion.div
           className="absolute top-10 right-0 w-72 h-72 bg-[#E8A020] opacity-[0.04] rounded-full blur-3xl"
