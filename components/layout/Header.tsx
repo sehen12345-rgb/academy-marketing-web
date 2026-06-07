@@ -59,7 +59,7 @@ export default function Header() {
           {/* CTA */}
           <div className="hidden md:flex items-center gap-3">
             <a
-              href="https://open.kakao.com/o/XXXXXXXX"
+              href="https://open.kakao.com/o/sFi0Tvyi"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-1.5 bg-[#FEE500] text-[#3A1D1D] text-sm font-bold px-4 py-2.5 rounded-full hover:bg-[#F5DC00] transition-colors tracking-tight"
@@ -103,7 +103,7 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href="https://open.kakao.com/o/XXXXXXXX"
+              href="https://open.kakao.com/o/sFi0Tvyi"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-[#FEE500] text-[#3A1D1D] text-sm font-bold px-5 py-3 rounded-full text-center mt-2 tracking-tight"

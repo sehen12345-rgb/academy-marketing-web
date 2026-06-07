@@ -105,7 +105,7 @@ export default function CTASection() {
 
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
               <a
-                href="https://open.kakao.com/o/XXXXXXXX"
+                href="https://open.kakao.com/o/sFi0Tvyi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-[#FEE500] text-[#3A1D1D] font-bold px-8 py-4 rounded-full hover:bg-[#F5DC00] transition-colors text-base tracking-tight"

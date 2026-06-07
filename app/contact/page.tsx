@@ -126,7 +126,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="text-xs text-[#8BA0B4] tracking-tight">전화 상담</p>
-                        <p className="font-bold text-[#0B1F3A] tracking-tight text-sm">010-XXXX-XXXX</p>
+                        <p className="font-bold text-[#0B1F3A] tracking-tight text-sm">010-5069-5364</p>
                         <p className="text-xs text-[#A8B8C8] mt-0.5 tracking-tight">평일 09:00 - 18:00</p>
                       </div>
                     </li>
@@ -136,7 +136,7 @@ export default function ContactPage() {
                       </div>
                       <div>
                         <p className="text-xs text-[#8BA0B4] tracking-tight">이메일</p>
-                        <p className="font-bold text-[#0B1F3A] tracking-tight text-sm">contact@example.com</p>
+                        <p className="font-bold text-[#0B1F3A] tracking-tight text-sm">metrogi98@naver.com</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">

@@ -27,7 +27,7 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {/* 카카오톡 */}
               <a
-                href="https://open.kakao.com/o/XXXXXXXX"
+                href="https://open.kakao.com/o/sFi0Tvyi"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-9 h-9 rounded-lg bg-[#FEE500] flex items-center justify-center hover:opacity-80 transition-opacity"
@@ -81,8 +81,8 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 tracking-tight">연락처</h4>
             <ul className="space-y-2 text-sm tracking-tight">
-              <li>📞 010-XXXX-XXXX</li>
-              <li>✉️ contact@example.com</li>
+              <li>📞 010-5069-5364</li>
+              <li>✉️ metrogi98@naver.com</li>
               <li className="pt-2">
                 <Link href="/contact" className="text-[#E8A020] hover:text-[#F0B429] transition-colors">
                   무료 상담 신청하기 →

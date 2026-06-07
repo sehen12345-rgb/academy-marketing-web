@@ -8,7 +8,7 @@ export default function FloatingContact() {
     <div className="fixed bottom-6 right-5 z-50 flex flex-col gap-3">
       {/* KakaoTalk */}
       <motion.a
-        href="https://open.kakao.com/o/XXXXXXXX"
+        href="https://open.kakao.com/o/sFi0Tvyi"
         target="_blank"
         rel="noopener noreferrer"
         initial={{ opacity: 0, scale: 0.8 }}
@@ -25,7 +25,7 @@ export default function FloatingContact() {
 
       {/* Phone */}
       <motion.a
-        href="tel:010-0000-0000"
+        href="tel:010-5069-5364"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 1.1, duration: 0.3 }}

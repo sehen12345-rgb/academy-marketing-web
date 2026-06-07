@@ -211,7 +211,7 @@ export default function HeroSection() {
               />
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                 <a
-                  href="https://open.kakao.com/o/XXXXXXXX"
+                  href="https://open.kakao.com/o/sFi0Tvyi"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="relative inline-flex items-center gap-2 bg-[#FEE500] text-[#3A1D1D] font-black px-8 py-4 rounded-full hover:bg-[#F5DC00] transition-colors text-base tracking-tight shadow-xl shadow-[#FEE500]/30"
