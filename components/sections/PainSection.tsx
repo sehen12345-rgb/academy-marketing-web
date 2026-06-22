@@ -1,133 +1,172 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { AlertCircle, TrendingDown, Clock, Users, ShieldX } from "lucide-react";
+import { X, Check, ArrowDown } from "lucide-react";
+import Link from "next/link";
 
-const pains = [
+const steps = [
   {
-    icon: AlertCircle,
-    title: "마케팅은 해야 하는데\n어디서 시작할지 모르겠어요",
-    desc: "블로그, 인스타, 네이버 광고... 뭐가 맞는지 몰라서 돈만 날린 경험, 있으시죠?",
+    label: "기",
+    question: "마케팅 대행사, 써보셨나요?",
+    body: "계약하고 나면 담당자가 바뀌고, 우리 학원 얘기는 안 듣고,\n그냥 템플릿 콘텐츠만 올라오고.",
+    sub: "한 번이라도 이런 경험 있으시다면, 문제는 대행사가 아니었을 수 있어요.",
   },
   {
-    icon: TrendingDown,
-    title: "광고비는 나가는데\n학생이 늘지 않아요",
-    desc: "광고비는 계속 나가는데 문의는 없고, 어디서 새는지도 모르는 상황.",
+    label: "승",
+    question: "진짜 문제가 뭔지 아세요?",
+    body: "문제는 마케팅이 아니에요.\n학원을 모르는 사람이 학원 마케팅을 하고 있는 게 문제예요.",
+    sub: "학부모가 뭘 걱정하는지, 우리 학원 강점이 뭔지 — 그걸 모르면 아무리 좋은 툴도 소용없어요.",
   },
   {
-    icon: Clock,
-    title: "수업 준비도 바쁜데\n마케팅까지 직접 할 시간이 없어요",
-    desc: "원장님이 교육에만 집중해야 하는데, 포스팅·댓글·광고 체크로 하루가 다 가요.",
+    label: "전",
+    question: "저희는 다르게 접근합니다.",
+    body: "계약 전에 대표가 직접 상담합니다.\n원장님 학원의 현황, 학부모 타겟, 지역 경쟁 구도를 먼저 파악하고\n그 다음에 방향을 설계해요.",
+    sub: "맞지 않으면 계약 안 해도 됩니다.",
   },
-  {
-    icon: Users,
-    title: "경쟁 학원은 SNS 팔로워가\n수천 명인데 우리는 0명이에요",
-    desc: "옆 학원은 릴스에 댓글이 넘치고 학부모 DM도 오는데, 우리 계정은 아무도 모릅니다.",
-  },
-  {
-    icon: TrendingDown,
-    title: "이전 대행사는 학원을 몰라서\n결국 계약만 해지했어요",
-    desc: "업종 무관 대행사는 학부모 심리를 모릅니다. 일반 카페 홍보하듯 학원을 올리면 효과가 없어요.",
-  },
-  {
-    icon: ShieldX,
-    title: "마케팅 대행사를\n믿기가 어렵습니다",
-    desc: "계약만 하면 나 몰라라, 성과 없어도 비용 청구. 그런 대행사가 너무 많다는 거 저희도 압니다.",
-    highlight: true,
-  },
+];
+
+const compare = [
+  { item: "콘텐츠 제작 방식", bad: "AI + 알바생 공장형 양산", good: "대표·전문가 직접 기획·작성" },
+  { item: "학원 파악", bad: "계약 후 체크리스트 한 장", good: "상담에서 원장님과 충분한 대화" },
+  { item: "블로그 글 퀄리티", bad: "학원 이름만 바꾼 복붙", good: "우리 학원 이야기가 담긴 글" },
+  { item: "전략 설계", bad: "모든 학원에 동일 템플릿", good: "지역·타겟·경쟁 구도 맞춤 설계" },
+  { item: "담당자", bad: "계약 후 담당자 교체 빈번", good: "대표가 직접 끝까지 관리" },
+  { item: "계약 방식", bad: "선불 + 위약금 조항", good: "맞지 않으면 계약 안 해도 됩니다" },
 ];
 
 export default function PainSection() {
   return (
     <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.03]"
-        style={{
-          backgroundImage: "radial-gradient(circle, #0B1F3A 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
-        }}
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{ backgroundImage: "radial-gradient(circle, #0B1F3A 1px, transparent 1px)", backgroundSize: "32px 32px" }}
       />
 
-      <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6">
+
+        {/* 헤더 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-14"
+          className="text-center mb-16"
         >
-          <motion.span
-            className="inline-block bg-[#E8A020]/10 text-[#C8821A] text-sm font-semibold px-4 py-2 rounded-full mb-4 tracking-tight border border-[#E8A020]/25"
-            whileInView={{ scale: [0.8, 1.05, 1] }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-          >
+          <span className="inline-block bg-[#E8A020]/10 text-[#C8821A] text-sm font-semibold px-4 py-2 rounded-full mb-4 tracking-tight border border-[#E8A020]/25">
             이런 고민, 있으시죠?
-          </motion.span>
+          </span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F3A] tracking-tight leading-tight">
-            학원 원장님이라면
-            <br />
-            누구나 겪는 문제들
+            학원 원장님이라면<br />누구나 겪는 문제들
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-          {pains.map((pain, index) => {
-            const Icon = pain.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 32, scale: 0.96 }}
-                whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.45, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
-                whileHover={{ y: -4 }}
-                className={`rounded-2xl p-7 border transition-all duration-200 ${
-                  pain.highlight
-                    ? "bg-[#0B1F3A] border-[#0B1F3A]"
-                    : "bg-[#F7F9FC] border-[#E2E8F0] hover:border-[#C5D5EA] hover:bg-[#EEF4FB]"
-                }`}
-              >
-                <div
-                  className={`w-11 h-11 rounded-xl flex items-center justify-center mb-5 ${
-                    pain.highlight ? "bg-[#E8A020]/20" : "bg-[#E8A020]/10"
-                  }`}
-                >
-                  <Icon size={20} className="text-[#E8A020]" />
+        {/* 기승전 스토리 */}
+        <div className="space-y-4 mb-16">
+          {steps.map((step, i) => (
+            <motion.div
+              key={step.label}
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+            >
+              <div className={`rounded-2xl p-7 border ${
+                i === 2
+                  ? "bg-[#0B1F3A] border-[#0B1F3A]"
+                  : "bg-[#F7F9FC] border-[#E2E8F0]"
+              }`}>
+                <div className="flex items-start gap-5">
+                  <span className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-black border-2 ${
+                    i === 2
+                      ? "border-[#E8A020] text-[#E8A020]"
+                      : "border-[#0B1F3A] text-[#0B1F3A]"
+                  }`}>
+                    {step.label}
+                  </span>
+                  <div>
+                    <p className={`text-lg font-black mb-2 tracking-tight ${i === 2 ? "text-[#E8A020]" : "text-[#0B1F3A]"}`}>
+                      {step.question}
+                    </p>
+                    <p className={`text-sm leading-relaxed whitespace-pre-line mb-2 tracking-tight ${i === 2 ? "text-white/80" : "text-[#0B1F3A]"}`}>
+                      {step.body}
+                    </p>
+                    <p className={`text-sm tracking-tight ${i === 2 ? "text-white/40" : "text-[#5C6B7E]"}`}>
+                      {step.sub}
+                    </p>
+                  </div>
                 </div>
-                <h3
-                  className={`font-bold text-base mb-3 leading-snug whitespace-pre-line tracking-tight ${
-                    pain.highlight ? "text-white" : "text-[#0B1F3A]"
-                  }`}
-                >
-                  {pain.title}
-                </h3>
-                <p
-                  className={`text-sm leading-relaxed tracking-tight ${
-                    pain.highlight ? "text-white/65" : "text-[#5C6B7E]"
-                  }`}
-                >
-                  {pain.desc}
-                </p>
-              </motion.div>
-            );
-          })}
+              </div>
+
+              {i < steps.length - 1 && (
+                <div className="flex justify-center my-2">
+                  <ArrowDown size={18} className="text-[#D6E6FF]" />
+                </div>
+              )}
+            </motion.div>
+          ))}
         </div>
 
+        {/* 비교표 */}
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-12"
+          transition={{ duration: 0.5 }}
+          className="mb-12"
         >
-          <p className="text-[#0B1F3A] text-lg font-semibold tracking-tight mb-3">
-            이 고민들, 저희가 전부 해결해드립니다.
-          </p>
-          <p className="text-[#C8821A] text-sm font-bold tracking-tight">
-            ✓ 후불제 &nbsp;·&nbsp; ✓ 위약금 없음 &nbsp;·&nbsp; ✓ 학원 전문 &nbsp;·&nbsp; ✓ 직접 실행
-          </p>
+          <p className="text-center text-xs font-bold text-[#A8B8C8] tracking-widest uppercase mb-6">공장형 대행사 vs 에듀플로우</p>
+          <div className="rounded-2xl overflow-hidden border border-[#E2E8F0]">
+            {/* 헤더 */}
+            <div className="grid grid-cols-3 bg-[#0B1F3A]">
+              <div className="px-5 py-3.5 text-xs font-bold text-white/30 tracking-widest uppercase">항목</div>
+              <div className="px-5 py-3.5 text-xs font-bold text-red-400 tracking-widest uppercase text-center">타 대행사</div>
+              <div className="px-5 py-3.5 text-xs font-bold text-[#E8A020] tracking-widest uppercase text-center">에듀플로우</div>
+            </div>
+            {compare.map((row, i) => (
+              <motion.div
+                key={row.item}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.06 }}
+                className={`grid grid-cols-3 border-t border-[#E2E8F0] ${i % 2 === 0 ? "bg-white" : "bg-[#F7F9FC]"}`}
+              >
+                <div className="px-5 py-4 text-xs font-bold text-[#0B1F3A] tracking-tight">{row.item}</div>
+                <div className="px-5 py-4 flex items-start gap-2">
+                  <X size={13} className="text-red-400 shrink-0 mt-0.5" strokeWidth={2.5} />
+                  <span className="text-xs text-[#5C6B7E] tracking-tight leading-snug">{row.bad}</span>
+                </div>
+                <div className="px-5 py-4 flex items-start gap-2">
+                  <Check size={13} className="text-emerald-500 shrink-0 mt-0.5" strokeWidth={2.5} />
+                  <span className="text-xs text-[#0B1F3A] font-semibold tracking-tight leading-snug">{row.good}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
+
+        {/* 결 — CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="bg-[#0B1F3A] rounded-2xl p-8 text-center"
+        >
+          <p className="text-white/50 text-sm mb-2 tracking-tight">공장에서 찍어낸 콘텐츠 말고</p>
+          <p className="text-white font-black text-xl sm:text-2xl mb-1 tracking-tight">
+            우리 학원 이야기를 담은 콘텐츠
+          </p>
+          <p className="text-[#E8A020] font-bold text-base mb-6 tracking-tight">
+            30분이면 우리 학원 문제가 어디 있는지 보입니다
+          </p>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 bg-[#E8A020] text-[#0B1F3A] font-black px-8 py-4 rounded-full hover:bg-[#F0B429] transition-colors text-sm tracking-tight shadow-lg shadow-[#E8A020]/20"
+          >
+            무료 진단 상담 신청
+          </Link>
+        </motion.div>
+
       </div>
     </section>
   );
