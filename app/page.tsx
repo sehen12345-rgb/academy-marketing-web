@@ -4,21 +4,12 @@ import FloatingContact from "@/components/ui/FloatingContact";
 import HeroSection from "@/components/sections/HeroSection";
 import TrustBadgesSection from "@/components/sections/TrustBadgesSection";
 import PainSection from "@/components/sections/PainSection";
-import StatementSection from "@/components/sections/StatementSection";
-import StatsSection from "@/components/sections/StatsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import WhyUsSection from "@/components/sections/WhyUsSection";
-import AchievementsSection from "@/components/sections/AchievementsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
-import ComparisonSection from "@/components/sections/ComparisonSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
-import PricingSection from "@/components/sections/PricingSection";
-import TeamSection from "@/components/sections/TeamSection";
 import ProcessSection from "@/components/sections/ProcessSection";
+import PricingSection from "@/components/sections/PricingSection";
 import FAQSection from "@/components/sections/FAQSection";
-import GuaranteeSection from "@/components/sections/GuaranteeSection";
-import PledgeSection from "@/components/sections/PledgeSection";
 import CTASection from "@/components/sections/CTASection";
 
 export default function Home() {
@@ -28,21 +19,12 @@ export default function Home() {
       <main className="flex-1">
         <HeroSection />
         <TrustBadgesSection />
-        <PortfolioSection />
         <PainSection />
-        <StatementSection />
-        <StatsSection />
         <ServicesSection />
-        <WhyUsSection />
-        <AchievementsSection />
-        <ComparisonSection />
+        <PortfolioSection />
         <TestimonialsSection />
-        <CaseStudiesSection />
-        <GuaranteeSection />
-        <PledgeSection />
-        <PricingSection />
-        <TeamSection />
         <ProcessSection />
+        <PricingSection />
         <FAQSection />
         <CTASection />
       </main>
