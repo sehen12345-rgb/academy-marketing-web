@@ -2,23 +2,72 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, MessageCircle, FileText, MapPin, Search, Target, TrendingUp, Users, ArrowRight, Video } from "lucide-react";
+import { Globe, MessageCircle, FileText, MapPin, TrendingUp, ArrowRight, Sparkles, Video, Megaphone } from "lucide-react";
 
 const services = [
-  { icon: Globe,         num: "01", title: "웹페이지 제작",       desc: "학원 맞춤 홈페이지. PC·모바일 완벽 대응.",         price: "200만원",     tag: "일회성",    cat: "웹",   back: "모바일 최적화 반응형 디자인으로 학부모 신뢰도를 높입니다." },
-  { icon: MessageCircle, num: "02", title: "스레드 운영",         desc: "프로필·댓글·리틀리 포함. 주 3회 정기 포스팅.",     price: "48만원/월",   tag: "월정기",    cat: "SNS",  back: "트렌디한 스레드 채널로 학원 브랜드를 자연스럽게 알립니다." },
-  { icon: Video,         num: "03", title: "숏폼 영상 제작",      desc: "릴스·유튜브 숏츠 직접 제작. 891만 뷰 달성 경험.",  price: "상담 후 결정", tag: "영상",      cat: "SNS",  back: "학부모 눈길을 사로잡는 숏폼 콘텐츠를 직접 제작합니다." },
-  { icon: FileText,      num: "04", title: "블로그 포스팅",       desc: "공장형 5만원 / 프리미엄 10만원. 키워드 최적화.",   price: "5~10만원/건", tag: "건별",      cat: "SNS",  back: "상위 노출 키워드를 공략해 검색 유입을 늘립니다." },
-  { icon: MapPin,        num: "05", title: "네이버 플레이스 CPC", desc: "플레이스 광고 운용. 광고비 포함 올인원.",          price: "상담 후 결정", tag: "광고비포함", cat: "광고",  back: "지도 검색 상단 노출로 근처 학부모를 직접 타겟팅합니다." },
-  { icon: Search,        num: "06", title: "네이버 파워링크",     desc: "키워드 검색 광고. 학원 타겟 키워드 전문 운용.",    price: "상담 후 결정", tag: "광고비포함", cat: "광고",  back: "구매 의도가 높은 검색 키워드에서 학원을 노출시킵니다." },
-  { icon: Target,        num: "07", title: "당근 광고",           desc: "지역 기반 광고. 학원 주변 학부모 직접 타겟팅.",   price: "상담 후 결정", tag: "지역기반",  cat: "광고",  back: "반경 설정으로 우리 학원 주변 학부모에게만 노출합니다." },
-  { icon: TrendingUp,    num: "08", title: "플레이스 상위 노출",  desc: "네이버 플레이스 순위 상승. 검증된 실행사 연계.",   price: "상담 후 결정", tag: "외주연계",  cat: "광고",  back: "플레이스 리뷰·저장수를 높여 자연 순위를 끌어올립니다." },
-  { icon: Users,         num: "09", title: "카페 바이럴",         desc: "지역 맘카페 커뮤니티 바이럴. 자연스러운 입소문.", price: "상담 후 결정", tag: "바이럴",    cat: "SNS",  back: "지역 맘카페에서 신뢰도 높은 자연스러운 후기를 만듭니다." },
+  {
+    icon: Globe,
+    num: "01",
+    title: "웹페이지 제작",
+    desc: "학원 맞춤 홈페이지. PC·모바일 완벽 대응. 상담 예약·수강 문의 기능 포함.",
+    tag: "일회성",
+    cat: "웹",
+    back: "모바일 최적화 반응형 디자인으로 학부모 신뢰도를 높이고 상담 전환율을 끌어올립니다.",
+  },
+  {
+    icon: FileText,
+    num: "02",
+    title: "브랜드 블로그",
+    desc: "네이버·티스토리 기반 학원 전용 블로그 구축 및 운영. 키워드 최적화 포스팅.",
+    tag: "월정기",
+    cat: "SNS",
+    back: "학원명·지역 키워드를 공략해 검색 상위 노출을 만들고 지속적인 유입을 만듭니다.",
+  },
+  {
+    icon: MessageCircle,
+    num: "03",
+    title: "스레드 운영",
+    desc: "프로필·리틀리 링크 세팅 포함. 주 3회 정기 포스팅으로 팔로워 확보.",
+    tag: "월정기",
+    cat: "SNS",
+    back: "트렌디한 스레드 채널로 학원 브랜드를 자연스럽게 알리고 DM 상담을 유도합니다.",
+  },
+  {
+    icon: MapPin,
+    num: "04",
+    title: "네이버 플레이스",
+    desc: "플레이스 CPC 광고 운용. 지도 검색 상단 노출로 근처 학부모를 직접 타겟팅.",
+    tag: "광고비포함",
+    cat: "광고",
+    back: "지도 앱에서 학원을 검색하는 학부모에게 최우선 노출. 광고비 실집행 그대로 청구.",
+  },
+  {
+    icon: TrendingUp,
+    num: "05",
+    title: "플레이스 상위 노출",
+    desc: "네이버 플레이스 자연 순위 상승. 리뷰·저장수 관리로 경쟁 학원 앞서기.",
+    tag: "월정기",
+    cat: "광고",
+    back: "플레이스 리뷰와 저장수를 체계적으로 관리해 광고 없이도 상위에 유지시킵니다.",
+  },
+  {
+    icon: Sparkles,
+    num: "06",
+    title: "커스텀 맞춤 마케팅",
+    desc: "숏폼·롱폼 영상 / 당근 광고 / 카페 침투 / 바이럴 마케팅 — 학원 상황에 맞게 조합.",
+    tag: "맞춤설계",
+    cat: "커스텀",
+    back: "정해진 틀 없이 학원 목표·예산·지역에 따라 최적의 채널 조합을 직접 설계합니다.",
+    custom: true,
+    options: ["숏폼 영상", "롱폼 콘텐츠", "당근 광고", "카페 침투", "바이럴 마케팅"],
+  },
 ];
 
-const TABS = ["전체", "SNS", "광고", "웹"] as const;
+const TABS = ["전체", "SNS", "광고", "웹", "커스텀"] as const;
 
-function FlipCard({ service, index }: { service: typeof services[0]; index: number }) {
+type Service = typeof services[0];
+
+function FlipCard({ service, index }: { service: Service; index: number }) {
   const [flipped, setFlipped] = useState(false);
   const Icon = service.icon;
 
@@ -28,7 +77,7 @@ function FlipCard({ service, index }: { service: typeof services[0]; index: numb
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="h-52"
+      className="h-56"
       style={{ perspective: "1200px" }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
@@ -44,23 +93,50 @@ function FlipCard({ service, index }: { service: typeof services[0]; index: numb
         {/* 앞면 */}
         <div
           style={{ backfaceVisibility: "hidden" }}
-          className="absolute inset-0 bg-white border border-[#D6E6FF] rounded-2xl p-5 flex flex-col group"
+          className={`absolute inset-0 rounded-2xl p-5 flex flex-col border ${
+            service.custom
+              ? "bg-[#0B1F3A] border-[#E8A020]/40"
+              : "bg-white border-[#D6E6FF]"
+          }`}
         >
-          <div className="flex items-start justify-between mb-4">
-            <div className="w-11 h-11 bg-[#0B1F3A] rounded-xl flex items-center justify-center">
-              <Icon size={20} className="text-[#E8A020]" />
+          <div className="flex items-start justify-between mb-3">
+            <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${
+              service.custom ? "bg-[#E8A020]/20" : "bg-[#0B1F3A]"
+            }`}>
+              <Icon size={20} className={service.custom ? "text-[#E8A020]" : "text-[#E8A020]"} />
             </div>
-            <span className="text-xs font-bold text-[#D6E6FF] tracking-widest">{service.num}</span>
+            <span className={`text-xs font-bold tracking-widest ${service.custom ? "text-white/20" : "text-[#D6E6FF]"}`}>
+              {service.num}
+            </span>
           </div>
-          <span className="inline-block text-xs font-bold px-2.5 py-1 rounded-full bg-[#F4F8FF] text-[#1B3D6E] border border-[#D6E6FF] mb-2.5 self-start tracking-tight">
+          <span className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-2.5 self-start tracking-tight border ${
+            service.custom
+              ? "bg-[#E8A020]/15 text-[#E8A020] border-[#E8A020]/30"
+              : "bg-[#F4F8FF] text-[#1B3D6E] border-[#D6E6FF]"
+          }`}>
             {service.tag}
           </span>
-          <h3 className="font-bold text-[#0B1F3A] mb-1.5 text-sm tracking-tight">{service.title}</h3>
-          <p className="text-[#5C6B7E] text-xs leading-relaxed flex-1">{service.desc}</p>
-          <div className="flex items-center gap-1 mt-3 text-[#1B3D6E]/40 text-[10px] font-semibold">
-            <span>자세히</span>
-            <ArrowRight size={9} />
-          </div>
+          <h3 className={`font-bold text-sm mb-1.5 tracking-tight ${service.custom ? "text-white" : "text-[#0B1F3A]"}`}>
+            {service.title}
+          </h3>
+          <p className={`text-xs leading-relaxed flex-1 ${service.custom ? "text-white/50" : "text-[#5C6B7E]"}`}>
+            {service.desc}
+          </p>
+          {service.options && (
+            <div className="flex flex-wrap gap-1 mt-2">
+              {service.options.map((opt) => (
+                <span key={opt} className="text-[10px] bg-white/10 text-white/60 px-2 py-0.5 rounded-full border border-white/10">
+                  {opt}
+                </span>
+              ))}
+            </div>
+          )}
+          {!service.options && (
+            <div className="flex items-center gap-1 mt-3 text-[#1B3D6E]/40 text-[10px] font-semibold">
+              <span>자세히</span>
+              <ArrowRight size={9} />
+            </div>
+          )}
         </div>
 
         {/* 뒷면 */}
@@ -77,11 +153,9 @@ function FlipCard({ service, index }: { service: typeof services[0]; index: numb
             <h3 className="font-bold text-white text-sm mb-2 tracking-tight">{service.title}</h3>
             <p className="text-white/60 text-xs leading-relaxed">{service.back}</p>
           </div>
-          <div className="relative">
-            <div className="border-t border-white/10 pt-3">
-              <p className="text-[11px] text-white/30 mb-0.5">상품가</p>
-              <p className="font-black text-[#E8A020] text-sm tracking-tight">{service.price}</p>
-            </div>
+          <div className="relative border-t border-white/10 pt-3">
+            <p className="text-[11px] text-white/30 mb-0.5">견적</p>
+            <p className="font-black text-[#E8A020] text-sm tracking-tight">상담 후 맞춤 안내</p>
           </div>
         </div>
       </motion.div>
@@ -124,8 +198,7 @@ export default function ServicesSection() {
               <p className="text-[#5C6B7E] text-sm mt-3 tracking-tight">카드에 마우스를 올리면 상세 정보가 나타납니다</p>
             </div>
 
-            {/* 탭 필터 */}
-            <div className="flex gap-1.5 bg-white rounded-full p-1 border border-[#D6E6FF] shadow-sm self-start sm:self-auto">
+            <div className="flex gap-1.5 bg-white rounded-full p-1 border border-[#D6E6FF] shadow-sm self-start sm:self-auto flex-wrap">
               {TABS.map((tab) => (
                 <button
                   key={tab}
