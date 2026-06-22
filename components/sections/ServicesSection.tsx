@@ -6,31 +6,33 @@ import { Globe, MessageCircle, FileText, MapPin, TrendingUp, ArrowRight, Sparkle
 
 const services = [
   {
-    icon: Globe,
-    num: "01",
-    title: "웹페이지 제작",
-    desc: "학원 맞춤 홈페이지. PC·모바일 완벽 대응. 상담 예약·수강 문의 기능 포함.",
-    tag: "일회성",
-    cat: "웹",
-    back: "모바일 최적화 반응형 디자인으로 학부모 신뢰도를 높이고 상담 전환율을 끌어올립니다.",
-  },
-  {
     icon: FileText,
-    num: "02",
+    num: "01",
     title: "브랜드 블로그",
-    desc: "네이버·티스토리 기반 학원 전용 블로그 구축 및 운영. 키워드 최적화 포스팅.",
-    tag: "월정기",
+    desc: "네이버·티스토리 학원 전용 블로그 구축 + 키워드 최적화 포스팅 정기 운영.",
+    tag: "핵심 서비스",
     cat: "SNS",
-    back: "학원명·지역 키워드를 공략해 검색 상위 노출을 만들고 지속적인 유입을 만듭니다.",
+    core: true,
+    back: "학원명·지역 키워드를 공략해 검색 상위 노출을 만들고 지속적인 신규 유입을 만듭니다.",
   },
   {
     icon: MessageCircle,
-    num: "03",
-    title: "스레드 운영",
-    desc: "프로필·리틀리 링크 세팅 포함. 주 3회 정기 포스팅으로 팔로워 확보.",
-    tag: "월정기",
+    num: "02",
+    title: "브랜드 스레드",
+    desc: "프로필·리틀리 링크 세팅 포함. 주 3회 정기 포스팅으로 팔로워·DM 상담 확보.",
+    tag: "핵심 서비스",
     cat: "SNS",
-    back: "트렌디한 스레드 채널로 학원 브랜드를 자연스럽게 알리고 DM 상담을 유도합니다.",
+    core: true,
+    back: "트렌디한 스레드 채널로 학원 브랜드를 자연스럽게 알리고 DM 상담을 꾸준히 유도합니다.",
+  },
+  {
+    icon: Globe,
+    num: "03",
+    title: "웹페이지 제작",
+    desc: "학원 맞춤 홈페이지 제작. PC·모바일 완벽 대응. 제작 후 수정·업데이트 지속 지원.",
+    tag: "제작+유지보수",
+    cat: "웹",
+    back: "모바일 최적화 반응형 디자인으로 신뢰도를 높이고, 이후 내용 수정도 언제든 요청 가능합니다.",
   },
   {
     icon: MapPin,
@@ -54,7 +56,7 @@ const services = [
     icon: Sparkles,
     num: "06",
     title: "커스텀 맞춤 마케팅",
-    desc: "숏폼·롱폼 영상 / 당근 광고 / 카페 침투 / 바이럴 마케팅 — 학원 상황에 맞게 조합.",
+    desc: "학원 상황에 맞게 채널을 조합해 설계하는 맞춤형 플랜.",
     tag: "맞춤설계",
     cat: "커스텀",
     back: "정해진 틀 없이 학원 목표·예산·지역에 따라 최적의 채널 조합을 직접 설계합니다.",
@@ -77,7 +79,7 @@ function FlipCard({ service, index }: { service: Service; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.4, delay: index * 0.06 }}
-      className="h-56"
+      className={service.custom ? "h-72" : "h-56"}
       style={{ perspective: "1200px" }}
       onMouseEnter={() => setFlipped(true)}
       onMouseLeave={() => setFlipped(false)}
@@ -96,6 +98,8 @@ function FlipCard({ service, index }: { service: Service; index: number }) {
           className={`absolute inset-0 rounded-2xl p-5 flex flex-col border ${
             service.custom
               ? "bg-[#0B1F3A] border-[#E8A020]/40"
+              : service.core
+              ? "bg-white border-[#E8A020]/60 ring-2 ring-[#E8A020]/20"
               : "bg-white border-[#D6E6FF]"
           }`}
         >
@@ -103,7 +107,7 @@ function FlipCard({ service, index }: { service: Service; index: number }) {
             <div className={`w-11 h-11 rounded-xl flex items-center justify-center ${
               service.custom ? "bg-[#E8A020]/20" : "bg-[#0B1F3A]"
             }`}>
-              <Icon size={20} className={service.custom ? "text-[#E8A020]" : "text-[#E8A020]"} />
+              <Icon size={20} className="text-[#E8A020]" />
             </div>
             <span className={`text-xs font-bold tracking-widest ${service.custom ? "text-white/20" : "text-[#D6E6FF]"}`}>
               {service.num}
@@ -112,6 +116,8 @@ function FlipCard({ service, index }: { service: Service; index: number }) {
           <span className={`inline-block text-xs font-bold px-2.5 py-1 rounded-full mb-2.5 self-start tracking-tight border ${
             service.custom
               ? "bg-[#E8A020]/15 text-[#E8A020] border-[#E8A020]/30"
+              : service.core
+              ? "bg-[#E8A020] text-[#0B1F3A] border-[#E8A020]"
               : "bg-[#F4F8FF] text-[#1B3D6E] border-[#D6E6FF]"
           }`}>
             {service.tag}
