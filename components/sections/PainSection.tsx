@@ -10,18 +10,29 @@ const steps = [
     question: "마케팅 대행사, 써보셨나요?",
     body: "계약하고 나면 담당자가 바뀌고, 우리 학원 얘기는 안 듣고,\n그냥 템플릿 콘텐츠만 올라오고.",
     sub: "한 번이라도 이런 경험 있으시다면, 문제는 대행사가 아니었을 수 있어요.",
+    dark: false,
   },
   {
     label: "승",
     question: "진짜 문제가 뭔지 아세요?",
     body: "문제는 마케팅이 아니에요.\n학원을 모르는 사람이 학원 마케팅을 하고 있는 게 문제예요.",
     sub: "학부모가 뭘 걱정하는지, 우리 학원 강점이 뭔지 — 그걸 모르면 아무리 좋은 툴도 소용없어요.",
+    dark: false,
   },
   {
     label: "전",
     question: "저희는 다르게 접근합니다.",
     body: "계약 전에 대표가 직접 상담합니다.\n원장님 학원의 현황, 학부모 타겟, 지역 경쟁 구도를 먼저 파악하고\n그 다음에 방향을 설계해요.",
     sub: "맞지 않으면 계약 안 해도 됩니다.",
+    dark: true,
+  },
+  {
+    label: "결",
+    question: "30분이면 우리 학원 문제가 어디 있는지 보입니다.",
+    body: "공장에서 찍어낸 콘텐츠 말고,\n우리 학원 이야기를 담은 콘텐츠로 시작하세요.",
+    sub: "지금 무료 진단 상담을 신청하시면 대표가 직접 연락드립니다.",
+    dark: true,
+    cta: true,
   },
 ];
 
@@ -70,28 +81,36 @@ export default function PainSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <div className={`rounded-2xl p-7 border ${
-                i === 2
+                step.dark
                   ? "bg-[#0B1F3A] border-[#0B1F3A]"
                   : "bg-[#F7F9FC] border-[#E2E8F0]"
               }`}>
                 <div className="flex items-start gap-5">
                   <span className={`shrink-0 w-9 h-9 rounded-full flex items-center justify-center text-sm font-black border-2 ${
-                    i === 2
+                    step.dark
                       ? "border-[#E8A020] text-[#E8A020]"
                       : "border-[#0B1F3A] text-[#0B1F3A]"
                   }`}>
                     {step.label}
                   </span>
-                  <div>
-                    <p className={`text-lg font-black mb-2 tracking-tight ${i === 2 ? "text-[#E8A020]" : "text-[#0B1F3A]"}`}>
+                  <div className="flex-1">
+                    <p className={`text-lg font-black mb-2 tracking-tight ${step.dark ? "text-[#E8A020]" : "text-[#0B1F3A]"}`}>
                       {step.question}
                     </p>
-                    <p className={`text-sm leading-relaxed whitespace-pre-line mb-2 tracking-tight ${i === 2 ? "text-white/80" : "text-[#0B1F3A]"}`}>
+                    <p className={`text-sm leading-relaxed whitespace-pre-line mb-2 tracking-tight ${step.dark ? "text-white/80" : "text-[#0B1F3A]"}`}>
                       {step.body}
                     </p>
-                    <p className={`text-sm tracking-tight ${i === 2 ? "text-white/40" : "text-[#5C6B7E]"}`}>
+                    <p className={`text-sm tracking-tight ${step.dark ? "text-white/40" : "text-[#5C6B7E]"}`}>
                       {step.sub}
                     </p>
+                    {step.cta && (
+                      <Link
+                        href="/contact"
+                        className="inline-flex items-center gap-2 mt-5 bg-[#E8A020] text-[#0B1F3A] font-black px-7 py-3.5 rounded-full hover:bg-[#F0B429] transition-colors text-sm tracking-tight shadow-lg shadow-[#E8A020]/20"
+                      >
+                        무료 진단 상담 신청
+                      </Link>
+                    )}
                   </div>
                 </div>
               </div>
@@ -144,28 +163,6 @@ export default function PainSection() {
           </div>
         </motion.div>
 
-        {/* 결 — CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="bg-[#0B1F3A] rounded-2xl p-8 text-center"
-        >
-          <p className="text-white/50 text-sm mb-2 tracking-tight">공장에서 찍어낸 콘텐츠 말고</p>
-          <p className="text-white font-black text-xl sm:text-2xl mb-1 tracking-tight">
-            우리 학원 이야기를 담은 콘텐츠
-          </p>
-          <p className="text-[#E8A020] font-bold text-base mb-6 tracking-tight">
-            30분이면 우리 학원 문제가 어디 있는지 보입니다
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 bg-[#E8A020] text-[#0B1F3A] font-black px-8 py-4 rounded-full hover:bg-[#F0B429] transition-colors text-sm tracking-tight shadow-lg shadow-[#E8A020]/20"
-          >
-            무료 진단 상담 신청
-          </Link>
-        </motion.div>
 
       </div>
     </section>
