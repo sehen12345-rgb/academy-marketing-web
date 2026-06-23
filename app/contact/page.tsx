@@ -31,8 +31,8 @@ const studentCounts = [
 ];
 
 const adBudgets = [
-  "아직 없음", "30만원 미만", "30~50만원",
-  "50~100만원", "100~200만원", "200만원 이상",
+  "100만원 미만", "100~150만원", "150~200만원",
+  "200~300만원", "300~500만원", "500만원 이상",
 ];
 
 const urgentIssues = [
@@ -140,10 +140,10 @@ export default function ContactPage() {
       if (res.ok) {
         setSubmitted(true);
       } else {
-        alert("전송 중 오류가 발생했습니다. 카카오톡으로 문의해 주세요.");
+        window.open("https://open.kakao.com/o/sFi0Tvyi", "_blank");
       }
     } catch {
-      alert("네트워크 오류가 발생했습니다. 카카오톡으로 문의해 주세요.");
+      window.open("https://open.kakao.com/o/sFi0Tvyi", "_blank");
     } finally {
       setLoading(false);
     }
