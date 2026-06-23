@@ -4,9 +4,14 @@ import FloatingContact from "@/components/ui/FloatingContact";
 import HeroSection from "@/components/sections/HeroSection";
 import TrustBadgesSection from "@/components/sections/TrustBadgesSection";
 import PainSection from "@/components/sections/PainSection";
+import WhyUsSection from "@/components/sections/WhyUsSection";
 import ServicesSection from "@/components/sections/ServicesSection";
+import AchievementsSection from "@/components/sections/AchievementsSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
+import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
+import ComparisonSection from "@/components/sections/ComparisonSection";
+import GuaranteeSection from "@/components/sections/GuaranteeSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import PricingSection from "@/components/sections/PricingSection";
 import FAQSection from "@/components/sections/FAQSection";
@@ -20,9 +25,14 @@ export default function Home() {
         <HeroSection />
         <TrustBadgesSection />
         <PainSection />
+        <WhyUsSection />
         <ServicesSection />
+        <AchievementsSection />
         <PortfolioSection />
+        <CaseStudiesSection />
         <TestimonialsSection />
+        <ComparisonSection />
+        <GuaranteeSection />
         <ProcessSection />
         <PricingSection />
         <FAQSection />

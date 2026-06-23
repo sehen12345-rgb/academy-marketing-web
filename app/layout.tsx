@@ -3,10 +3,10 @@ import Script from "next/script";
 import "./globals.css";
 import ScrollProgressBar from "@/components/ui/ScrollProgressBar";
 
-const GA_ID = "G-XXXXXXXXXX"; // Google Analytics 측정 ID — 실제 ID로 교체 필요
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? "";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://academy-marketing-web.vercel.app"),
+  metadataBase: new URL("https://eduflows.kr"),
   title: "에듀플로우 | 학원 마케팅 전문 대행사",
   description:
     "릴스 891만뷰 달성! 에듀플로우의 학원 맞춤 마케팅. 웹페이지·SNS·네이버·당근 광고까지 원스톱. 광고비 포함 올인원 가격.",
@@ -33,13 +33,17 @@ export default function RootLayout({
   return (
     <html lang="ko" className="h-full scroll-smooth">
       <head>
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script id="ga-init" strategy="afterInteractive">{`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_ID}');
-        `}</Script>
+        {GA_ID && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+            <Script id="ga-init" strategy="afterInteractive">{`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_ID}');
+            `}</Script>
+          </>
+        )}
       </head>
       <body className="min-h-full flex flex-col">
         <ScrollProgressBar />
