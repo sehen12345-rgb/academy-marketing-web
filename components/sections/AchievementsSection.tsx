@@ -37,10 +37,10 @@ const bizStats = [
   },
   {
     icon: Users,
-    label: "평균 원생 증가",
-    value: "+14명",
+    label: "파트너 학원 평균 월 매출 증가",
+    value: "+420만원",
     sub: "계약 후 3개월 기준",
-    note: "학원 규모·지역에 따라 다름",
+    note: "수강료 평균 기준 · 학원 규모에 따라 다름",
     color: "text-emerald-600",
     bg: "bg-emerald-500/10",
     border: "border-emerald-500/20",
