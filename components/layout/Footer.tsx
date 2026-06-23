@@ -73,7 +73,7 @@ export default function Footer() {
               <li>블로그 포스팅</li>
               <li>네이버 플레이스 광고</li>
               <li>네이버 파워링크</li>
-              <li>당근 광고</li>
+              <li>카카오 채널 운영</li>
             </ul>
           </div>
 
