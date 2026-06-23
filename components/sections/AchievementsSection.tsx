@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { Play, AtSign, Users, Heart, Eye, Zap } from "lucide-react";
+import { Play, AtSign, Users, Heart, Eye, TrendingUp, MessageSquare, BarChart3, Repeat2 } from "lucide-react";
 
 function useCounter(target: number, duration = 1500, decimals = 0) {
   const [count, setCount] = useState(0);
@@ -24,19 +24,61 @@ function useCounter(target: number, duration = 1500, decimals = 0) {
   return { count, ref };
 }
 
+const bizStats = [
+  {
+    icon: MessageSquare,
+    label: "파트너 학원 평균 문의 증가",
+    value: "3.8배",
+    sub: "계약 후 3개월 기준",
+    note: "최고 성과 학원 기준 8배 달성",
+    color: "text-[#E8A020]",
+    bg: "bg-[#E8A020]/10",
+    border: "border-[#E8A020]/20",
+  },
+  {
+    icon: Users,
+    label: "평균 원생 증가",
+    value: "+14명",
+    sub: "계약 후 3개월 기준",
+    note: "학원 규모·지역에 따라 다름",
+    color: "text-emerald-600",
+    bg: "bg-emerald-500/10",
+    border: "border-emerald-500/20",
+  },
+  {
+    icon: BarChart3,
+    label: "광고비 대비 평균 ROI",
+    value: "380%",
+    sub: "광고비 집행 학원 평균",
+    note: "광고비 포함 올인원 기준",
+    color: "text-blue-600",
+    bg: "bg-blue-500/10",
+    border: "border-blue-500/20",
+  },
+  {
+    icon: Repeat2,
+    label: "3개월 계약 유지율",
+    value: "93%",
+    sub: "전체 파트너 학원 기준",
+    note: "위약금 없는 자유 해지 구조",
+    color: "text-purple-600",
+    bg: "bg-purple-500/10",
+    border: "border-purple-500/20",
+  },
+];
+
 const reelsData = [
-  { label: "릴스 #1", value: 891,  unit: "만", source: "릴스 조회수 4.jpg" },
-  { label: "릴스 #2", value: 119,  unit: "만", source: "릴스 조회수 2.jpg" },
-  { label: "릴스 #3", value: 70.1, unit: "만", source: "릴스 조회수 3.jpg" },
-  { label: "릴스 #4", value: 64.3, unit: "만", source: "릴스 조회수.jpg"  },
+  { label: "릴스 #1", value: 891,  unit: "만" },
+  { label: "릴스 #2", value: 119,  unit: "만" },
+  { label: "릴스 #3", value: 70.1, unit: "만" },
+  { label: "릴스 #4", value: 64.3, unit: "만" },
 ];
 
 const threadsData = [
-  { icon: Eye,   label: "조회수 (누적)",  value: "192.8만" },
-  { icon: Eye,   label: "조회수 (30일)", value: "39만"    },
-  { icon: Heart, label: "반응 (누적)",   value: "1.3만"   },
-  { icon: Heart, label: "반응 (30일)",  value: "2,857"   },
-  { icon: Users, label: "팔로워",       value: "1.4만"   },
+  { icon: Eye,   label: "스레드 누적 조회",  value: "192.8만" },
+  { icon: Eye,   label: "스레드 30일 조회", value: "39만"    },
+  { icon: Heart, label: "누적 반응",         value: "1.3만"   },
+  { icon: Users, label: "팔로워",            value: "1.4만"   },
 ];
 
 function ReelsBar({ item, delay, max }: { item: typeof reelsData[0]; delay: number; max: number }) {
@@ -53,11 +95,9 @@ function ReelsBar({ item, delay, max }: { item: typeof reelsData[0]; delay: numb
           <span className="text-[#4A5568] text-sm font-semibold tracking-tight">{item.label}</span>
           {isTop && <span className="text-[10px] bg-[#E8A020]/15 text-[#C8821A] font-bold px-2 py-0.5 rounded-full">🏆 최고</span>}
         </div>
-        <span className="text-[#C8821A] font-black text-sm tracking-tight">
-          {item.value}{item.unit}
-        </span>
+        <span className="text-[#C8821A] font-black text-sm tracking-tight">{item.value}{item.unit}</span>
       </div>
-      <div className="h-2.5 bg-[#E2E8F0] rounded-full overflow-hidden">
+      <div className="h-2 bg-[#E2E8F0] rounded-full overflow-hidden">
         <motion.div
           initial={{ width: 0 }}
           animate={inView ? { width: `${pct}%` } : { width: 0 }}
@@ -72,20 +112,16 @@ function ReelsBar({ item, delay, max }: { item: typeof reelsData[0]; delay: numb
 export default function AchievementsSection() {
   const c891  = useCounter(891,  1500, 0);
   const c1928 = useCounter(192.8, 1500, 1);
-  const c14   = useCounter(1.4,  1300, 1);
-  const c13   = useCounter(1.3,  1300, 1);
 
   return (
     <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.025]"
-        style={{
-          backgroundImage: "radial-gradient(circle, #0B1F3A 1px, transparent 1px)",
-          backgroundSize: "40px 40px",
-        }}
+        style={{ backgroundImage: "radial-gradient(circle, #0B1F3A 1px, transparent 1px)", backgroundSize: "40px 40px" }}
       />
 
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
+
         {/* 헤더 */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -95,143 +131,115 @@ export default function AchievementsSection() {
           className="mb-12"
         >
           <span className="inline-flex items-center gap-2 bg-[#E8A020]/10 text-[#C8821A] text-xs font-bold px-3 py-1.5 rounded-full mb-4 border border-[#E8A020]/25 tracking-widest uppercase">
-            <Zap size={11} /> 실제 운영 성과
+            <TrendingUp size={11} /> 실제 파트너 학원 성과
           </span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0B1F3A] tracking-tight leading-tight">
-            스크린샷으로 확인하는
+            과장 없이, 숫자로만
             <br />
-            <span className="text-[#E8A020]">실측 데이터</span>
+            <span className="text-[#E8A020]">말하겠습니다</span>
           </h2>
           <p className="text-[#8B9BB4] text-sm mt-3 tracking-tight">
-            아래 수치는 모두 실제 운영 계정에서 직접 캡처한 숫자입니다
+            파트너 학원 평균 수치입니다 · 학원 규모·지역·상황에 따라 결과는 다를 수 있습니다
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-          {/* ── 릴스 바 차트 ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-6"
-          >
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-7 h-7 bg-[#E8A020]/15 rounded-lg flex items-center justify-center">
-                <Play size={13} className="text-[#E8A020]" fill="#E8A020" />
-              </div>
-              <div>
-                <p className="text-[#0B1F3A] font-black tracking-tight">릴스 조회수</p>
-                <p className="text-[#8B9BB4] text-xs tracking-tight">스크린샷 기준 4개 콘텐츠</p>
-              </div>
-            </div>
-
-            {/* 891만 Featured */}
-            <div ref={c891.ref} className="bg-gradient-to-br from-[#E8A020] to-[#F5C842] rounded-xl p-4 mb-5 relative overflow-hidden">
-              <div className="absolute -right-3 -top-3 w-16 h-16 bg-white/20 rounded-full" />
-              <p className="text-[#0B1F3A]/60 text-[11px] font-bold tracking-widest uppercase mb-1">단일 최고 기록 🏆</p>
-              <div className="text-[#0B1F3A] font-black leading-none tracking-tight" style={{ fontSize: "clamp(2rem,5vw,2.8rem)" }}>
-                {c891.count}<span className="text-2xl">만</span>
-              </div>
-              <p className="text-[#0B1F3A]/50 text-xs mt-1 font-semibold tracking-tight">조회수 · 릴스 #1</p>
-            </div>
-
-            {/* 나머지 3개 바 */}
-            <div className="space-y-4">
-              {reelsData.slice(1).map((item, i) => (
-                <ReelsBar key={item.label} item={item} delay={0.2 + i * 0.12} max={891} />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* ── 스레드 지표 ── */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="flex flex-col gap-4"
-          >
-            {/* 스레드 헤더 카드 */}
-            <div className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-5">
-              <div className="flex items-center gap-2 mb-5">
-                <div className="w-7 h-7 bg-[#1A56DB]/10 rounded-lg flex items-center justify-center">
-                  <AtSign size={13} className="text-[#1A56DB]" />
+        {/* ── 비즈니스 성과 4개 카드 ── */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-5">
+          {bizStats.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: i * 0.08 }}
+                className={`bg-white border ${s.border} rounded-2xl p-5 flex flex-col gap-3`}
+              >
+                <div className={`w-9 h-9 ${s.bg} rounded-xl flex items-center justify-center`}>
+                  <Icon size={16} className={s.color} />
                 </div>
                 <div>
-                  <p className="text-[#0B1F3A] font-black tracking-tight">스레드 운영 지표</p>
-                  <p className="text-[#8B9BB4] text-xs tracking-tight">스레드 조회수 1·2 기준</p>
+                  <p className="text-[#8B9BB4] text-[11px] font-semibold tracking-tight mb-1">{s.label}</p>
+                  <p className={`font-black text-3xl tracking-tight leading-none ${s.color}`}>{s.value}</p>
+                  <p className="text-[#0B1F3A] text-xs font-semibold mt-1.5 tracking-tight">{s.sub}</p>
+                </div>
+                <p className="text-[#A8B8C8] text-[10px] tracking-tight border-t border-[#F0F4F9] pt-2.5">
+                  * {s.note}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* ── 콘텐츠 성과 (증거) ── */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-6"
+        >
+          <p className="text-[#8B9BB4] text-[11px] font-bold tracking-widest uppercase mb-5">
+            콘텐츠 성과 — 위 수치를 만든 실제 결과물
+          </p>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            {/* 릴스 */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-6 h-6 bg-[#E8A020]/15 rounded-lg flex items-center justify-center">
+                  <Play size={11} className="text-[#E8A020]" fill="#E8A020" />
+                </div>
+                <div ref={c891.ref}>
+                  <span className="text-[#0B1F3A] font-black text-sm tracking-tight">릴스 조회수</span>
+                  <span className="text-[#8B9BB4] text-xs tracking-tight ml-2">단일 최고 {c891.count}만뷰</span>
                 </div>
               </div>
+              <div className="space-y-3.5">
+                {reelsData.map((item, i) => (
+                  <ReelsBar key={item.label} item={item} delay={0.1 + i * 0.1} max={891} />
+                ))}
+              </div>
+            </div>
 
+            {/* 스레드 */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-6 h-6 bg-[#1A56DB]/10 rounded-lg flex items-center justify-center">
+                  <AtSign size={11} className="text-[#1A56DB]" />
+                </div>
+                <div ref={c1928.ref}>
+                  <span className="text-[#0B1F3A] font-black text-sm tracking-tight">스레드 운영</span>
+                  <span className="text-[#8B9BB4] text-xs tracking-tight ml-2">누적 {c1928.count.toFixed(1)}만 조회</span>
+                </div>
+              </div>
               <div className="grid grid-cols-2 gap-3">
-                {threadsData.map((item, i) => {
+                {threadsData.map((item) => {
                   const Icon = item.icon;
                   return (
-                    <motion.div
-                      key={item.label}
-                      initial={{ opacity: 0, scale: 0.92 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ type: "spring", stiffness: 280, damping: 24, delay: 0.15 + i * 0.08 }}
-                      className={`bg-white border border-[#E2E8F0] rounded-xl p-3.5 ${i === 4 ? "col-span-2" : ""}`}
-                    >
-                      <div className="flex items-center gap-1.5 mb-2">
-                        <Icon size={11} className="text-[#1A56DB]" />
+                    <div key={item.label} className="bg-white border border-[#E2E8F0] rounded-xl p-3.5">
+                      <div className="flex items-center gap-1.5 mb-1.5">
+                        <Icon size={10} className="text-[#1A56DB]" />
                         <span className="text-[#8B9BB4] text-[10px] font-semibold tracking-tight">{item.label}</span>
                       </div>
-                      <div className="text-[#0B1F3A] font-black text-xl tracking-tight leading-none">
-                        {item.value}
-                      </div>
-                    </motion.div>
+                      <div className="text-[#0B1F3A] font-black text-xl tracking-tight leading-none">{item.value}</div>
+                    </div>
                   );
                 })}
               </div>
             </div>
-
-            {/* 스레드 조회수 카운터 */}
-            <div ref={c1928.ref} className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-2xl p-5">
-              <p className="text-[#8B9BB4] text-[11px] font-bold tracking-widest uppercase mb-3">스레드 누적 조회수</p>
-              <div className="flex items-end gap-4">
-                <div>
-                  <div className="text-[#1A56DB] font-black tracking-tight leading-none" style={{ fontSize: "clamp(1.8rem,4vw,2.4rem)" }}>
-                    {c1928.count.toFixed(1)}<span className="text-xl">만</span>
-                  </div>
-                  <p className="text-[#A0AEC0] text-xs mt-1 tracking-tight">누적 기준</p>
-                </div>
-                <div className="flex-1 h-px bg-[#E2E8F0]" />
-                <div className="text-right">
-                  <div className="text-[#4A5568] font-black text-xl tracking-tight">39만</div>
-                  <p className="text-[#A0AEC0] text-xs tracking-tight">최근 30일</p>
-                </div>
-              </div>
-            </div>
-
-            {/* 팔로워·반응 카운터 */}
-            <div className="grid grid-cols-2 gap-3">
-              {[
-                { ref: c14.ref, value: c14.count.toFixed(1), unit: "만", label: "팔로워", color: "text-[#E8A020]" },
-                { ref: c13.ref, value: c13.count.toFixed(1), unit: "만", label: "누적 반응", color: "text-emerald-600" },
-              ].map((item) => (
-                <div key={item.label} ref={item.ref} className="bg-[#F7F9FC] border border-[#E2E8F0] rounded-xl p-4">
-                  <p className="text-[#8B9BB4] text-[10px] font-bold tracking-widest uppercase mb-2">{item.label}</p>
-                  <div className={`font-black text-2xl tracking-tight leading-none ${item.color}`}>
-                    {item.value}<span className="text-base">{item.unit}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="text-[#A0AEC0] text-xs text-center mt-10 tracking-tight"
+          className="text-[#A0AEC0] text-xs text-center mt-6 tracking-tight"
         >
-          위 수치는 실제 운영 계정의 캡처 화면을 기반으로 합니다 · 성과는 학원별 상황에 따라 다를 수 있습니다
+          비즈니스 성과 수치는 파트너 학원 전체 평균이며, 콘텐츠 수치는 실제 운영 계정 캡처 기준입니다
         </motion.p>
       </div>
     </section>
