@@ -81,7 +81,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-bold mb-4 tracking-tight">연락처</h4>
             <ul className="space-y-2 text-sm tracking-tight">
-              <li>📞 010-5069-5364</li>
+              <li><a href="tel:010-5069-5364" className="hover:text-white/70 transition-colors">📞 010-5069-5364</a></li>
               <li>✉️ metrogi98@naver.com</li>
               <li className="pt-2">
                 <Link href="/contact" className="text-[#E8A020] hover:text-[#F0B429] transition-colors">

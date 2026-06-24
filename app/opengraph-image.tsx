@@ -88,7 +88,7 @@ export default function OGImage() {
               </div>
               <div style={{ display: "flex", flexDirection: "column" }}>
                 <span style={{ color: "white", fontWeight: 900, fontSize: "26px", letterSpacing: "-0.5px" }}>
-                  에듀<span style={{ color: "#E8A020" }}>라이즈</span>
+                  에듀<span style={{ color: "#E8A020" }}>플로우</span>
                 </span>
                 <span style={{ color: "rgba(255,255,255,0.4)", fontSize: "13px", marginTop: "1px" }}>
                   학원 마케팅 전문 대행사
