@@ -66,10 +66,8 @@ export default function PainSection() {
           viewport={{ once: true }}
           className="mb-20"
         >
-          <span className="inline-block bg-[#E8A020]/10 text-[#C8821A] text-base font-bold px-4 py-2 rounded-full mb-5 tracking-tight border border-[#E8A020]/25">
-            이런 고민, 있으시죠?
-          </span>
           <h2 className="text-4xl sm:text-5xl font-black text-[#0B1F3A] tracking-tight leading-[1.15]">
+            <span className="text-[#E8A020]">이런 고민,</span> 있으시죠?<br />
             학원 원장님이라면<br />
             <span className="text-[#E8A020]">누구나 겪는</span> 문제들
           </h2>
