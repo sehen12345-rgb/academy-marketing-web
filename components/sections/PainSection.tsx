@@ -69,7 +69,7 @@ export default function PainSection() {
           <span className="inline-block bg-[#E8A020]/10 text-[#C8821A] text-xs font-bold px-4 py-2 rounded-full mb-5 tracking-widest uppercase border border-[#E8A020]/25">
             이런 고민, 있으시죠?
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-[#0B1F3A] tracking-tight leading-[1.15]">
+          <h2 className="text-2xl sm:text-3xl font-black text-[#0B1F3A] tracking-tight leading-[1.15]">
             학원 원장님이라면<br />
             <span className="text-[#E8A020]">누구나 겪는</span> 문제들
           </h2>
@@ -155,6 +155,36 @@ export default function PainSection() {
             ))}
           </div>
         </div>
+
+        {/* 전자책 배너 */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-16"
+        >
+          <div className="relative rounded-2xl overflow-hidden bg-[#0B1F3A] border border-[#E8A020]/20 px-7 py-6 flex items-center gap-5">
+            <div className="shrink-0 w-12 h-12 rounded-full bg-[#E8A020]/15 flex items-center justify-center text-2xl">
+              📖
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[10px] font-bold text-[#E8A020] tracking-widest uppercase mb-1">무료 칼럼</p>
+              <p className="text-white font-black text-base sm:text-lg tracking-tight leading-snug">
+                무료 칼럼 읽고 오셔도<br className="sm:hidden" /> 늦지 않습니다
+              </p>
+              <p className="text-white/45 text-xs mt-1 tracking-tight">학원 마케팅 핵심 노하우를 무료로 확인하세요</p>
+            </div>
+            <a
+              href="https://open.kakao.com/o/sFi0Tvyi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-1.5 bg-[#E8A020] text-[#0B1F3A] font-black text-xs px-5 py-2.5 rounded-full hover:bg-[#F0B429] transition-colors whitespace-nowrap"
+            >
+              무료로 읽기
+            </a>
+          </div>
+        </motion.div>
 
         {/* 비교표 */}
         <motion.div
