@@ -7,10 +7,10 @@ import { ShieldCheck, CreditCard, Wrench, Clock, ArrowRight } from "lucide-react
 const guarantees = [
   {
     icon: CreditCard,
-    title: "후불제",
-    sub: "선납금 없음",
-    desc: "SNS·광고 월정기 상품은 선납 없이 서비스 제공 후 청구합니다. 돈 먼저 내고 시작하는 구조가 아닙니다.",
-    badge: "월별 후불",
+    title: "월 선납제",
+    sub: "매월 선불 청구",
+    desc: "SNS·광고 월정기 상품은 매월 초 선납으로 청구합니다. 광고비는 실집행 금액 그대로 별도 청구되며, 대행 수수료 15%가 추가됩니다.",
+    badge: "월 선납",
     color: "text-[#E8A020]",
     bg: "bg-[#E8A020]/10",
     border: "border-[#E8A020]/30",

@@ -13,7 +13,7 @@ const rows = [
   { label: "24시간 내 견적서 발송",        diy: "partial", generic: false,     us: true },
   { label: "숨겨진 추가 비용 없음",        diy: true,      generic: false,     us: true },
   { label: "원장님 수업 집중 가능",        diy: false,     generic: true,      us: true },
-  { label: "후불제 (선납금 없음)",         diy: true,      generic: false,     us: true },
+  { label: "월 선납제 (투명한 비용 구조)",  diy: false,     generic: false,     us: true },
   { label: "직접 실행 (외주 없음)",        diy: false,     generic: false,     us: true },
   { label: "KPI 미달성 시 무료 재조정",   diy: false,     generic: false,     us: true },
 ];

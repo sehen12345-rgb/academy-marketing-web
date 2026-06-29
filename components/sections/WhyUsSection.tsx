@@ -33,10 +33,10 @@ const reasons = [
   },
   {
     icon: Zap,
-    title: "광고비 포함 올인원 가격",
-    detail: "광고비 별도 없음, 숨겨진 비용 없음",
-    desc: "광고 운영비와 광고비를 한 금액에 포함합니다. 청구서 받고 놀라는 일이 없습니다.",
-    proof: "후불제·위약금 0원",
+    title: "투명한 비용 구조",
+    detail: "광고비 실집행 청구 + 수수료 15% 별도",
+    desc: "광고비는 실집행 금액 그대로 청구되며, 대행 수수료 15%가 별도 부과됩니다. 모든 비용은 계약 전 투명하게 공개합니다.",
+    proof: "월 선납·위약금 0원",
     color: "bg-[#E8A020]/10",
     iconColor: "text-[#C8821A]",
   },
@@ -100,7 +100,7 @@ export default function WhyUsSection() {
 
             {/* 체크리스트 */}
             <div className="space-y-2">
-              {["후불제 — 선납금 없음", "위약금 0원 — 자유로운 해지", "24시간 내 견적서 발송"].map((item) => (
+              {["월 선납제 — 투명한 비용 구조", "위약금 0원 — 자유로운 해지", "24시간 내 견적서 발송"].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-[#0B1F3A] font-medium tracking-tight">
                   <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />
                   {item}

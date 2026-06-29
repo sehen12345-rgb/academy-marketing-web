@@ -206,7 +206,7 @@ export default function PricingSection() {
         </motion.div>
 
         <p className="text-center text-[#A8B8C8] text-xs mt-5 tracking-tight">
-          * 광고비는 실집행 금액 그대로 청구 · 대행 수수료 별도 없음 · VAT 10% 별도
+          * 광고비는 실집행 금액 그대로 청구 · 대행 수수료 15% 별도 · VAT 10% 별도
         </p>
 
       </div>
