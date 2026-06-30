@@ -100,6 +100,7 @@ export default function ContactPage() {
   const [selectedMarketing, setSelectedMarketing] = useState<string[]>([]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [submitError, setSubmitError] = useState(false);
   const [form, setForm] = useState({
     name: "",
     academy: "",
@@ -140,9 +141,11 @@ export default function ContactPage() {
       if (res.ok) {
         setSubmitted(true);
       } else {
+        setSubmitError(true);
         window.open("https://open.kakao.com/o/sFi0Tvyi", "_blank");
       }
     } catch {
+      setSubmitError(true);
       window.open("https://open.kakao.com/o/sFi0Tvyi", "_blank");
     } finally {
       setLoading(false);
@@ -298,9 +301,11 @@ export default function ContactPage() {
                       </motion.div>
                       <h3 className="text-2xl font-black text-[#0B1F3A] mb-2 tracking-tight">상담 신청 완료!</h3>
                       <p className="text-[#5C6B7E] mb-8 text-sm tracking-tight leading-relaxed">
-                        빠른 시간 내에 연락드리겠습니다.
+                        평일 09:00~18:00 내로 연락드립니다.
                         <br />
-                        평일 기준 24시간 내 견적서를 보내드립니다.
+                        24시간 내 맞춤 견적서를 발송해드립니다.
+                        <br />
+                        <span className="text-[#A8B8C8]">급하신 경우 카카오톡 채널로 바로 연락 주세요.</span>
                       </p>
                       <Link
                         href="/"
@@ -459,6 +464,13 @@ export default function ContactPage() {
                           className={`${inputClass} resize-none`}
                         />
                       </div>
+
+                      {submitError && (
+                        <div className="bg-red-50 border border-red-200 rounded-xl px-4 py-3 text-sm text-red-700 tracking-tight">
+                          전송 중 오류가 발생했습니다. 카카오톡 채널로 연결해드립니다.
+                          <a href="https://open.kakao.com/o/sFi0Tvyi" target="_blank" rel="noopener noreferrer" className="underline ml-1 font-bold">카카오톡 바로가기 →</a>
+                        </div>
+                      )}
 
                       <button
                         type="submit"
