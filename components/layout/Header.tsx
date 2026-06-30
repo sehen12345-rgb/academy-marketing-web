@@ -13,8 +13,9 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [isOpen, setIsOpen]     = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen]       = useState(false);
+  const [scrolled, setScrolled]   = useState(false);
+  const [bannerOn, setBannerOn]   = useState(true);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
@@ -23,11 +24,33 @@ export default function Header() {
   }, []);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${
-        scrolled ? "shadow-md shadow-black/8" : "shadow-sm shadow-black/5"
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50">
+      {/* 긴급성 띠 배너 */}
+      {bannerOn && (
+        <div className="bg-[#E8A020] text-[#0B1F3A] text-xs sm:text-sm font-bold tracking-tight relative">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-2 flex items-center justify-center gap-2 text-center">
+            <span className="animate-pulse">🔥</span>
+            <span>이번 달 신규 계약 <span className="underline underline-offset-2">2자리</span> 남았습니다</span>
+            <span className="hidden sm:inline text-[#0B1F3A]/60">—</span>
+            <Link href="/contact" className="hidden sm:inline underline underline-offset-2 hover:text-[#0B1F3A]/70 transition-colors">
+              지금 바로 상담 신청 →
+            </Link>
+            <button
+              onClick={() => setBannerOn(false)}
+              aria-label="닫기"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#0B1F3A]/50 hover:text-[#0B1F3A] transition-colors"
+            >
+              <X size={14} />
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div
+        className={`bg-white transition-all duration-300 ${
+          scrolled ? "shadow-md shadow-black/8" : "shadow-sm shadow-black/5"
+        }`}
+      >
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16 sm:h-[68px]">
 
@@ -122,6 +145,7 @@ export default function Header() {
           </nav>
         </div>
       )}
+      </div>
     </header>
   );
 }
