@@ -190,7 +190,7 @@ export default function PledgeSection() {
           className="mt-10 border-t border-[#E2E8F0] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4"
         >
           <p className="text-[#8B9BB4] text-xs tracking-tight text-center sm:text-left">
-            위 20가지 약속은 에듀플로우 표준 계약서(2024년 개정판)에 전문 수록되어 있습니다.
+            위 20가지 약속은 에듀플로우 표준 계약서(2026년 개정판)에 전문 수록되어 있습니다.
           </p>
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-[#E8A020] flex items-center justify-center">

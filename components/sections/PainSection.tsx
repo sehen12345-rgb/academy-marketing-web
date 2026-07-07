@@ -179,7 +179,7 @@ export default function PainSection() {
               rel="noopener noreferrer"
               className="shrink-0 inline-flex items-center gap-1.5 bg-[#E8A020] text-[#0B1F3A] font-black text-xs px-5 py-2.5 rounded-full hover:bg-[#F0B429] transition-colors whitespace-nowrap"
             >
-              무료로 읽기
+              카카오 상담
             </a>
           </div>
         </motion.div>

@@ -126,6 +126,14 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!form.name || !form.academy || !form.phone) {
+      alert("담당자 이름, 학원명, 연락처는 필수 입력 항목입니다.");
+      return;
+    }
+    if (!form.academyType || !form.studentCount || !form.adBudget || !form.urgentIssue) {
+      alert("학원 유형, 현재 원생 수, 월 광고 예산, 가장 시급한 문제를 선택해주세요.");
+      return;
+    }
     setLoading(true);
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {

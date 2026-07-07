@@ -15,7 +15,7 @@ const academies = [
 const partners = [
   {
     name: "NAVER",
-    label: "네이버 공식 파트너",
+    label: "네이버 광고 파트너",
     color: "text-[#03C75A]",
     bg: "bg-[#03C75A]/8",
     border: "border-[#03C75A]/20",
@@ -27,7 +27,7 @@ const partners = [
   },
   {
     name: "KAKAO",
-    label: "카카오비즈 파트너",
+    label: "카카오 광고 운용",
     color: "text-[#3A1D1D]",
     bg: "bg-[#FEE500]/20",
     border: "border-[#FEE500]/40",
@@ -39,7 +39,7 @@ const partners = [
   },
   {
     name: "META",
-    label: "Meta 비즈니스 파트너",
+    label: "Meta 광고 운용",
     color: "text-[#1877F2]",
     bg: "bg-[#1877F2]/8",
     border: "border-[#1877F2]/20",

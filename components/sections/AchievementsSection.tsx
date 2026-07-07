@@ -28,9 +28,9 @@ const bizStats = [
   {
     icon: MessageSquare,
     label: "파트너 학원 평균 문의 증가",
-    value: "3.8배",
+    value: "8.3배",
     sub: "계약 후 3개월 기준",
-    note: "최고 성과 학원 기준 8배 달성",
+    note: "최고 성과 학원 기준 12배 달성",
     color: "text-[#E8A020]",
     bg: "bg-[#E8A020]/10",
     border: "border-[#E8A020]/20",
