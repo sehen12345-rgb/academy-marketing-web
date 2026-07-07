@@ -15,13 +15,19 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen]       = useState(false);
   const [scrolled, setScrolled]   = useState(false);
-  const [bannerOn, setBannerOn]   = useState(true);
+  const [bannerOn, setBannerOn]   = useState(false);
 
   useEffect(() => {
+    if (!sessionStorage.getItem("bannerDismissed")) setBannerOn(true);
     const fn = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  const dismissBanner = () => {
+    sessionStorage.setItem("bannerDismissed", "1");
+    setBannerOn(false);
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -36,7 +42,7 @@ export default function Header() {
               지금 바로 상담 신청 →
             </Link>
             <button
-              onClick={() => setBannerOn(false)}
+              onClick={dismissBanner}
               aria-label="닫기"
               className="absolute right-3 top-1/2 -translate-y-1/2 text-[#0B1F3A]/50 hover:text-[#0B1F3A] transition-colors"
             >
