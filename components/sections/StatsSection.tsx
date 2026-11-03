@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
 const stats = [
-  { value: "23",   suffix: "+",   label: "파트너 학원",        desc: "현재 함께하는 학원 수",     ring: 100 },
+  { value: "5",    suffix: "곳",  label: "파트너 학원",        desc: "소수 정예, 대표 직접 담당",  ring: 50  },
   { value: "8.3",  suffix: "배",  label: "평균 문의 증가",     desc: "계약 3개월 평균 성과",      ring: 83  },
   { value: "93",   suffix: "%",   label: "3개월 유지율",       desc: "만족해서 계속 맡기는 비율", ring: 93  },
   { value: "24",   suffix: "h",   label: "견적서 발송",        desc: "상담 후 24시간 내 발송",    ring: 80  },

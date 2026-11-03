@@ -11,7 +11,7 @@ const highlights = ["광고비 포함 올인원", "학원 전문 마케팅", "�
 
 const stats = [
   { icon: TrendingUp, value: "8.3배", label: "평균 문의 증가", color: "text-emerald-400", bg: "bg-emerald-400/20" },
-  { icon: Users,      value: "23+",   label: "파트너 학원",    color: "text-blue-300",    bg: "bg-blue-400/20"   },
+  { icon: Users,      value: "5곳",   label: "파트너 학원",    color: "text-blue-300",    bg: "bg-blue-400/20"   },
   { icon: Star,       value: "93%",   label: "3개월 유지율",   color: "text-[#E8A020]",   bg: "bg-[#E8A020]/20"  },
 ];
 
@@ -114,7 +114,7 @@ export default function HeroSection() {
             </span>
             <span className="inline-flex items-center gap-2 border border-emerald-400/40 text-emerald-300 text-xs font-bold px-3.5 py-2 rounded-full bg-emerald-400/10 backdrop-blur-sm tracking-tight">
               <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-              현재 23개 학원 운영 중
+              월 5개 학원 소수 정예 운영
             </span>
           </motion.div>
 

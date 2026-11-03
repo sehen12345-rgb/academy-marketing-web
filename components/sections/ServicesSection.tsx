@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, MessageCircle, FileText, MapPin, TrendingUp, ArrowRight, Sparkles, Video, Megaphone } from "lucide-react";
+import { Globe, MessageCircle, FileText, MapPin, TrendingUp, ArrowRight, Sparkles, Video, Megaphone, MousePointerClick } from "lucide-react";
 
 const services = [
   {
@@ -53,8 +53,17 @@ const services = [
     back: "플레이스 리뷰와 저장수를 체계적으로 관리해 광고 없이도 상위에 유지시킵니다.",
   },
   {
-    icon: Sparkles,
+    icon: MousePointerClick,
     num: "06",
+    title: "네이버 파워링크",
+    desc: "검색 상단 CPC 광고 직접 운용. 세부 키워드 세팅으로 문의 의향 높은 학부모만 타겟팅.",
+    tag: "검색광고",
+    cat: "광고",
+    back: "파워링크 키워드 전략 수립부터 입찰 최적화·성과 분석까지 직접 운용합니다. 광고비 실집행액 + 수수료 15% 청구.",
+  },
+  {
+    icon: Sparkles,
+    num: "07",
     title: "커스텀 맞춤 마케팅",
     desc: "학원 상황에 맞게 채널을 조합해 설계하는 맞춤형 플랜.",
     tag: "맞춤설계",
