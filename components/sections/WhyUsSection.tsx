@@ -85,7 +85,7 @@ export default function WhyUsSection() {
               전문가가 필요합니다
             </h2>
             <p className="text-[#5C6B7E] text-sm leading-relaxed tracking-tight mb-8">
-              학원 원장님의 진짜 문제는 "마케팅 방법을 모르는 것"이 아닙니다. 믿을 수 있는 파트너가 없다는 것입니다. 에듀플로우는 다릅니다.
+              학원 원장님의 진짜 문제는 &ldquo;마케팅 방법을 모르는 것&rdquo;이 아닙니다. 믿을 수 있는 파트너가 없다는 것입니다. 에듀플로우는 다릅니다.
             </p>
 
             {/* 핵심 수치 3개 */}

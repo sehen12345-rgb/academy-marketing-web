@@ -110,8 +110,8 @@ function ReelsBar({ item, delay, max }: { item: typeof reelsData[0]; delay: numb
 }
 
 export default function AchievementsSection() {
-  const c891  = useCounter(891,  1500, 0);
-  const c1928 = useCounter(192.8, 1500, 1);
+  const { count: count891,  ref: ref891  } = useCounter(891,   1500, 0);
+  const { count: count1928, ref: ref1928 } = useCounter(192.8, 1500, 1);
 
   return (
     <section className="py-20 sm:py-28 bg-white relative overflow-hidden">
@@ -191,9 +191,9 @@ export default function AchievementsSection() {
                 <div className="w-6 h-6 bg-[#E8A020]/15 rounded-lg flex items-center justify-center">
                   <Play size={11} className="text-[#E8A020]" fill="#E8A020" />
                 </div>
-                <div ref={c891.ref}>
-                  <span className="text-[#0B1F3A] font-black text-sm tracking-tight">릴스 조회수</span>
-                  <span className="text-[#8B9BB4] text-xs tracking-tight ml-2">단일 최고 {c891.count}만뷰</span>
+                <div>
+                  <span ref={ref891} className="text-[#0B1F3A] font-black text-sm tracking-tight">릴스 조회수</span>
+                  <span className="text-[#8B9BB4] text-xs tracking-tight ml-2">단일 최고 {count891}만뷰</span>
                 </div>
               </div>
               <div className="space-y-3.5">
@@ -209,9 +209,9 @@ export default function AchievementsSection() {
                 <div className="w-6 h-6 bg-[#1A56DB]/10 rounded-lg flex items-center justify-center">
                   <AtSign size={11} className="text-[#1A56DB]" />
                 </div>
-                <div ref={c1928.ref}>
-                  <span className="text-[#0B1F3A] font-black text-sm tracking-tight">스레드 운영</span>
-                  <span className="text-[#8B9BB4] text-xs tracking-tight ml-2">누적 {c1928.count.toFixed(1)}만 조회</span>
+                <div>
+                  <span ref={ref1928} className="text-[#0B1F3A] font-black text-sm tracking-tight">스레드 운영</span>
+                  <span className="text-[#8B9BB4] text-xs tracking-tight ml-2">누적 {count1928.toFixed(1)}만 조회</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">

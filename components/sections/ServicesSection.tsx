@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Globe, MessageCircle, FileText, MapPin, TrendingUp, ArrowRight, Sparkles, Video, Megaphone, MousePointerClick } from "lucide-react";
+import { Globe, MessageCircle, FileText, MapPin, TrendingUp, ArrowRight, Sparkles, MousePointerClick } from "lucide-react";
 
 const services = [
   {

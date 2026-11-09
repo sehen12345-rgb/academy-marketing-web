@@ -18,7 +18,9 @@ export default function Header() {
   const [bannerOn, setBannerOn]   = useState(false);
 
   useEffect(() => {
-    if (!sessionStorage.getItem("bannerDismissed")) setBannerOn(true);
+    if (!sessionStorage.getItem("bannerDismissed")) {
+      setTimeout(() => setBannerOn(true), 0);
+    }
     const fn = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", fn);
     return () => window.removeEventListener("scroll", fn);

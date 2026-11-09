@@ -86,10 +86,10 @@ export default function StatementSection() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <p className="text-white text-xl sm:text-2xl font-black leading-snug tracking-tight mb-5">
-              학부모는 '잘 가르치는 학원'을 찾는 게 아닙니다.
+              학부모는 &apos;잘 가르치는 학원&apos;을 찾는 게 아닙니다.
             </p>
             <p className="text-white/55 text-base leading-relaxed tracking-tight">
-              <span className="text-white/80 font-semibold">'우리 아이를 이해해줄 것 같은 학원'</span>을 찾습니다.<br /><br />
+              <span className="text-white/80 font-semibold">&apos;우리 아이를 이해해줄 것 같은 학원&apos;</span>을 찾습니다.<br /><br />
               그 차이가 문의 수를 만들고,<br />
               그 차이는 마케팅으로 만들 수 있습니다.
             </p>

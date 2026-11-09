@@ -1,26 +1,8 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, useEffect, useState } from "react";
+import { useRef } from "react";
 import { TrendingUp, Users, MessageSquare, ArrowUpRight } from "lucide-react";
-
-function useCounter(target: number, duration = 1200) {
-  const [val, setVal] = useState(0);
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-  useEffect(() => {
-    if (!inView) return;
-    let s = 0;
-    const step = target / (duration / 16);
-    const t = setInterval(() => {
-      s += step;
-      if (s >= target) { setVal(target); clearInterval(t); }
-      else setVal(Math.floor(s));
-    }, 16);
-    return () => clearInterval(t);
-  }, [inView, target, duration]);
-  return { val, ref };
-}
 
 const cases = [
   {
